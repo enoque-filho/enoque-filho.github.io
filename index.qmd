@@ -1,0 +1,34 @@
+---
+title: "Pagina Incial"
+---
+
+## Quem Sou
+
+Me chamo Enoque Filho, sou graduando do curso de Bacharelado Em Estatística na Universidade Federal do Piauí (UFPI) com espectativas de concluir em 2024.
+
+Tenho interesse por Estatística, Metodologia Cientifica, Psicologia, Psicometria, Programação, Linguagem R. tidyverse, R Markdown e Quarto.
+
+
+## Resumo de Habilidades
+
+- Linguagem R: Avançado
+- Excel: Intermediário
+- Inglês: Intermediário
+
+## Formação
+
+- 2019 - Atualmente: Bacharelado em Estatística pela UFPI
+
+
+## Entre em contato
+
+- WhatsApp: *(86) 99431-1263*
+- Gmail: enoquefilho@gmail.com
+- LinkedIn:  <linkedin.com/in/enoque-filho-70200b183>
+- Github: <https://github.com/enoque-filho>
+- Instagram: @enokesan
+
+
+
+
+

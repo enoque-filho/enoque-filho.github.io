@@ -1,0 +1,24 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Enoque Filho"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - projetos.qmd
+
+format: 
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    highlight-style: nord
+    css: styles.css
+    toc: true
+
+editor: visual
+
