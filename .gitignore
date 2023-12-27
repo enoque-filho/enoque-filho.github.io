@@ -2,5 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-
+.ini
+**/desktop.ini
 /.quarto/
