@@ -1,37 +1,40 @@
 ---
-title: "Pagina Incial"
+title: "Sobre mim"
+subtitle: "Enoque de S. A. Filho"
+about:
+  template: trestles
+  image: imagem_temporaria.png # https://leagueofitems.com/images/champions/tiles/256/57.webp
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com/enoque-filho  
 ---
+
+**Este portfólio está em construção!**
 
 ## Quem Sou
 
 Me chamo Enoque Filho, sou graduando do curso de Bacharelado Em Estatística na Universidade Federal do Piauí (UFPI) com espectativas de concluir em 2024.
 
-Tenho interesse por Estatística, Metodologia Cientifica, Psicologia, Psicometria, Programação, Linguagem R. tidyverse, R Markdown e Quarto.
-
+Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional
 
 ## Resumo de Habilidades
 
-- Linguagem R: Avançado
-- Excel: Intermediário
-- Inglês: Intermediário
+- Estatística **|** Analise de Dados
+- R (Linguagem de Programação) Avançado
+-   Excel: Intermediário
+-   Pacote Office
+-   Inglês: Intermediário
 
 ## Formação
 
-- 2019 - Atualmente: Bacharelado em Estatística pela UFPI
-
+Graduação em Estatística pela UFPI **|** 2019 - Presente
 
 ## Entre em contato
 
-- WhatsApp: *(86) 99431-1263*
-- Gmail: enoquefilho@gmail.com
-- LinkedIn:  <linkedin.com/in/enoque-filho-70200b183>
-- Github: <https://github.com/enoque-filho>
-- Instagram: @enokesan
-
-
-
-
-
-
-
+-   <i class="bi bi-whatsapp"></i>: **(86) 99431-1263**
+-   <i class="bi bi-envelope"></i>: **enoquefilhomail\@gmail.com**
 

@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Enoque Filho">
+
+<title>Enoque Filho - Spotify 2023: Análise das músicas mais populares</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+<script src="../../site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="../../site_libs/react-18.2.0/react.min.js"></script>
+<script src="../../site_libs/react-18.2.0/react-dom.min.js"></script>
+<script src="../../site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../../site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+<script src="../../site_libs/reactable-binding-0.4.4/reactable.js"></script>
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Enoque Filho</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Sobre mim</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projetos.html" rel="" target=""><i class="bi bi-bar-chart-line" role="img">
+</i> 
+ <span class="menu-text">Projetos</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/enoque-filho" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/enoque-filho-70200b183" rel="" target=""><i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta pagina</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução">Introdução</a>
+  <ul class="collapse">
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#conjunto-de-dados" id="toc-conjunto-de-dados" class="nav-link" data-scroll-target="#conjunto-de-dados">Conjunto de Dados</a></li>
+  </ul></li>
+  <li><a href="#análise-exploratória" id="toc-análise-exploratória" class="nav-link" data-scroll-target="#análise-exploratória">Análise Exploratória</a>
+  <ul class="collapse">
+  <li><a href="#análise-visual-univariada" id="toc-análise-visual-univariada" class="nav-link" data-scroll-target="#análise-visual-univariada">Análise visual univariada</a></li>
+  <li><a href="#anláise-bidimensional" id="toc-anláise-bidimensional" class="nav-link" data-scroll-target="#anláise-bidimensional">Anláise bidimensional</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Spotify 2023: Análise das músicas mais populares</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Código</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Mostrar o código</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Esconder o código</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Ver o código fonte</a></li></ul></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">EDA</div>
+    <div class="quarto-category">kaggle</div>
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Análise Descritiva</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>Enoque Filho </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data de Publicação</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">21 de dezembro de 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introdução" class="level1">
+<h1>Introdução</h1>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pacotes = c('tidyverse', 'gt', 'reactable')</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># enoqueR_dependencias = c("tidyverse", "gtsummary", "pryr", "rstatix", "moments")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c(pacotes, enoqueR_dependencias))</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github('enoqueR/enoqueR)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(enoqueR) </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reactable)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="conjunto-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="conjunto-de-dados">Conjunto de Dados</h2>
+<blockquote class="blockquote">
+<p><em>This dataset contains a comprehensive list of the most famous songs of 2023 as listed on Spotify. The dataset offers a wealth of features beyond what is typically available in similar datasets. It provides insights into each song’s attributes, popularity, and presence on various music platforms. The dataset includes information such as <strong>track name, artist(s) name, release date, Spotify playlists and charts, streaming statistics, Apple Music presence, Deezer presence, Shazam charts, and various audio features</strong>.</em> - Fonte: <a href="#0">https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023</a></p>
+</blockquote>
+<div class="cell" data-df-print="paged">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando o conjunto de dados</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># disponivel em: https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'spotify-2023.csv'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">30</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["track_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_s_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["artist_count"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["released_year"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["released_month"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["released_day"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["in_spotify_playlists"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["in_spotify_charts"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["streams"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["in_apple_playlists"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["in_apple_charts"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["in_deezer_playlists"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["in_deezer_charts"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["in_shazam_charts"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["bpm"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["key"],"name":[16],"type":["chr"],"align":["left"]},{"label":["mode"],"name":[17],"type":["chr"],"align":["left"]},{"label":["danceability_percent"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["valence_percent"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["energy_percent"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["acousticness_percent"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_percent"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["liveness_percent"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["speechiness_percent"],"name":[24],"type":["dbl"],"align":["right"]}],"data":[{"1":"Seven (feat. Latto) (Explicit Ver.)","2":"Latto, Jung Kook","3":"2","4":"2023","5":"7","6":"14","7":"553","8":"147","9":"141381703","10":"43","11":"263","12":"45","13":"10","14":"826","15":"125","16":"B","17":"Major","18":"80","19":"89","20":"83","21":"31","22":"0","23":"8","24":"4"},{"1":"LALA","2":"Myke Towers","3":"1","4":"2023","5":"3","6":"23","7":"1474","8":"48","9":"133716286","10":"48","11":"126","12":"58","13":"14","14":"382","15":"92","16":"C#","17":"Major","18":"71","19":"61","20":"74","21":"7","22":"0","23":"10","24":"4"},{"1":"vampire","2":"Olivia Rodrigo","3":"1","4":"2023","5":"6","6":"30","7":"1397","8":"113","9":"140003974","10":"94","11":"207","12":"91","13":"14","14":"949","15":"138","16":"F","17":"Major","18":"51","19":"32","20":"53","21":"17","22":"0","23":"31","24":"6"},{"1":"Cruel Summer","2":"Taylor Swift","3":"1","4":"2019","5":"8","6":"23","7":"7858","8":"100","9":"800840817","10":"116","11":"207","12":"125","13":"12","14":"548","15":"170","16":"A","17":"Major","18":"55","19":"58","20":"72","21":"11","22":"0","23":"11","24":"15"},{"1":"WHERE SHE GOES","2":"Bad Bunny","3":"1","4":"2023","5":"5","6":"18","7":"3133","8":"50","9":"303236322","10":"84","11":"133","12":"87","13":"15","14":"425","15":"144","16":"A","17":"Minor","18":"65","19":"23","20":"80","21":"14","22":"63","23":"11","24":"6"},{"1":"Sprinter","2":"Dave, Central Cee","3":"2","4":"2023","5":"6","6":"1","7":"2186","8":"91","9":"183706234","10":"67","11":"213","12":"88","13":"17","14":"946","15":"141","16":"C#","17":"Major","18":"92","19":"66","20":"58","21":"19","22":"0","23":"8","24":"24"},{"1":"Ella Baila Sola","2":"Eslabon Armado, Peso Pluma","3":"2","4":"2023","5":"3","6":"16","7":"3090","8":"50","9":"725980112","10":"34","11":"222","12":"43","13":"13","14":"418","15":"148","16":"F","17":"Minor","18":"67","19":"83","20":"76","21":"48","22":"0","23":"8","24":"3"},{"1":"Columbia","2":"Quevedo","3":"1","4":"2023","5":"7","6":"7","7":"714","8":"43","9":"58149378","10":"25","11":"89","12":"30","13":"13","14":"194","15":"100","16":"F","17":"Major","18":"67","19":"26","20":"71","21":"37","22":"0","23":"11","24":"4"},{"1":"fukumean","2":"Gunna","3":"1","4":"2023","5":"5","6":"15","7":"1096","8":"83","9":"95217315","10":"60","11":"210","12":"48","13":"11","14":"953","15":"130","16":"C#","17":"Minor","18":"85","19":"22","20":"62","21":"12","22":"0","23":"28","24":"9"},{"1":"La Bebe - Remix","2":"Peso Pluma, Yng Lvcas","3":"2","4":"2023","5":"3","6":"17","7":"2953","8":"44","9":"553634067","10":"49","11":"110","12":"66","13":"13","14":"339","15":"170","16":"D","17":"Minor","18":"81","19":"56","20":"48","21":"21","22":"0","23":"8","24":"33"},{"1":"un x100to","2":"Bad Bunny, Grupo Frontera","3":"2","4":"2023","5":"4","6":"17","7":"2876","8":"40","9":"505671438","10":"41","11":"205","12":"54","13":"12","14":"251","15":"83","16":"F#","17":"Minor","18":"57","19":"56","20":"72","21":"23","22":"0","23":"27","24":"5"},{"1":"Super Shy","2":"NewJeans","3":"1","4":"2023","5":"7","6":"7","7":"422","8":"55","9":"58255150","10":"37","11":"202","12":"21","13":"5","14":"168","15":"150","16":"F","17":"Minor","18":"78","19":"52","20":"82","21":"18","22":"0","23":"15","24":"7"},{"1":"Flowers","2":"Miley Cyrus","3":"1","4":"2023","5":"1","6":"12","7":"12211","8":"115","9":"1316855716","10":"300","11":"215","12":"745","13":"58","14":"1021","15":"118","16":"NA","17":"Major","18":"71","19":"65","20":"68","21":"6","22":"0","23":"3","24":"7"},{"1":"Daylight","2":"David Kushner","3":"1","4":"2023","5":"4","6":"14","7":"3528","8":"98","9":"387570742","10":"80","11":"156","12":"182","13":"24","14":"1281","15":"130","16":"D","17":"Minor","18":"51","19":"32","20":"43","21":"83","22":"0","23":"9","24":"3"},{"1":"As It Was","2":"Harry Styles","3":"1","4":"2022","5":"3","6":"31","7":"23575","8":"130","9":"2513188493","10":"403","11":"198","12":"863","13":"46","14":"NA","15":"174","16":"F#","17":"Minor","18":"52","19":"66","20":"73","21":"34","22":"0","23":"31","24":"6"},{"1":"Kill Bill","2":"SZA","3":"1","4":"2022","5":"12","6":"8","7":"8109","8":"77","9":"1163093654","10":"183","11":"162","12":"161","13":"12","14":"187","15":"89","16":"G#","17":"Major","18":"64","19":"43","20":"73","21":"5","22":"17","23":"16","24":"4"},{"1":"Cupid - Twin Ver.","2":"Fifty Fifty","3":"1","4":"2023","5":"2","6":"24","7":"2942","8":"77","9":"496795686","10":"91","11":"212","12":"78","13":"6","14":"0","15":"120","16":"B","17":"Minor","18":"78","19":"76","20":"59","21":"43","22":"0","23":"34","24":"3"},{"1":"What Was I Made For? [From The Motion Picture \"Barbie\"]","2":"Billie Eilish","3":"1","4":"2023","5":"7","6":"13","7":"873","8":"104","9":"30546883","10":"80","11":"227","12":"95","13":"24","14":"1173","15":"78","16":"NA","17":"Major","18":"44","19":"14","20":"9","21":"96","22":"0","23":"10","24":"3"},{"1":"Classy 101","2":"Feid, Young Miko","3":"2","4":"2023","5":"3","6":"31","7":"2610","8":"40","9":"335222234","10":"43","11":"100","12":"54","13":"14","14":"187","15":"100","16":"B","17":"Major","18":"86","19":"67","20":"66","21":"14","22":"0","23":"12","24":"16"},{"1":"Like Crazy","2":"Jimin","3":"1","4":"2023","5":"3","6":"24","7":"596","8":"68","9":"363369738","10":"8","11":"104","12":"23","13":"2","14":"29","15":"120","16":"G","17":"Major","18":"63","19":"36","20":"73","21":"0","22":"0","23":"36","24":"4"},{"1":"LADY GAGA","2":"Gabito Ballesteros, Junior H, Peso Pluma","3":"3","4":"2023","5":"6","6":"22","7":"332","8":"26","9":"86444842","10":"11","11":"163","12":"10","13":"4","14":"0","15":"140","16":"F","17":"Minor","18":"65","19":"87","20":"74","21":"22","22":"0","23":"42","24":"4"},{"1":"I Can See You (Taylor���s Version) (From The","2":"Taylor Swift","3":"1","4":"2023","5":"7","6":"7","7":"516","8":"38","9":"52135248","10":"73","11":"119","12":"42","13":"1","14":"150","15":"123","16":"F#","17":"Major","18":"69","19":"82","20":"76","21":"6","22":"0","23":"6","24":"3"},{"1":"I Wanna Be Yours","2":"Arctic Monkeys","3":"1","4":"2013","5":"1","6":"1","7":"12859","8":"110","9":"1297026226","10":"24","11":"98","12":"582","13":"2","14":"73","15":"135","16":"NA","17":"Minor","18":"48","19":"44","20":"42","21":"12","22":"2","23":"11","24":"3"},{"1":"Peso Pluma: Bzrp Music Sessions, Vol. 55","2":"Bizarrap, Peso Pluma","3":"2","4":"2023","5":"5","6":"31","7":"1313","8":"40","9":"200647221","10":"17","11":"152","12":"32","13":"11","14":"139","15":"133","16":"F","17":"Minor","18":"85","19":"81","20":"67","21":"26","22":"0","23":"12","24":"5"},{"1":"Popular (with Playboi Carti & Madonna) - The Idol Vol. 1 (Music from the HBO Original Series)","2":"The Weeknd, Madonna, Playboi Carti","3":"3","4":"2023","5":"6","6":"2","7":"1945","8":"87","9":"115364561","10":"74","11":"182","12":"87","13":"14","14":"1093","15":"99","16":"C#","17":"Major","18":"85","19":"83","20":"68","21":"7","22":"0","23":"36","24":"20"},{"1":"SABOR FRESA","2":"Fuerza Regida","3":"1","4":"2023","5":"6","6":"22","7":"250","8":"26","9":"78300654","10":"16","11":"149","12":"10","13":"5","14":"168","15":"130","16":"G","17":"Minor","18":"79","19":"96","20":"86","21":"9","22":"0","23":"9","24":"9"},{"1":"Calm Down (with Selena Gomez)","2":"R��ma, Selena G","3":"2","4":"2022","5":"3","6":"25","7":"7112","8":"77","9":"899183384","10":"202","11":"119","12":"318","13":"38","14":"96","15":"107","16":"B","17":"Major","18":"80","19":"82","20":"80","21":"43","22":"0","23":"14","24":"4"},{"1":"MOJABI GHOST","2":"Tainy, Bad Bunny","3":"2","4":"2023","5":"6","6":"29","7":"859","8":"40","9":"61245289","10":"35","11":"109","12":"41","13":"14","14":"211","15":"122","16":"F#","17":"Minor","18":"81","19":"74","20":"71","21":"14","22":"0","23":"56","24":"4"},{"1":"Last Night","2":"Morgan Wallen","3":"1","4":"2023","5":"1","6":"31","7":"2420","8":"19","9":"429829812","10":"52","11":"107","12":"15","13":"1","14":"325","15":"204","16":"F#","17":"Major","18":"52","19":"52","20":"68","21":"46","22":"0","23":"15","24":"4"},{"1":"Dance The Night (From Barbie The Album)","2":"Dua Lipa","3":"1","4":"2023","5":"5","6":"25","7":"2988","8":"101","9":"127408954","10":"0","11":"0","12":"143","13":"38","14":"0","15":"110","16":"B","17":"Minor","18":"67","19":"78","20":"85","21":"2","22":"0","23":"33","24":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div>
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">%&gt;%</span> enoqueR<span class="sc">::</span><span class="fu">overall_info</span>(),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">%&gt;%</span> enoqueR<span class="sc">::</span><span class="fu">overall_tipos</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="tbl-overall" class="cell tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p><strong>?(caption)</strong></p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["x"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Numero de variaveis","2":"24"},{"1":"Numero de observacoes","2":"953"},{"1":"Numero de celulas vazias","2":"146"},{"1":"Linhas duplicadas","2":"0"},{"1":"Tamanho de memoria","2":"310328"},{"1":"Numerico","2":"20"},{"1":"Categorico","2":"0"},{"1":"Caractere","2":"4"},{"1":"Logico","2":"0"},{"1":"Data","2":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>O conjunto de dados apresenta um total de 24 colunas, 955 observações e ausência de linhas duplicadas. Dentre as 24 colunas, 19 são numéricas e 5 são de caractere.</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 953
+Columns: 24
+$ track_name               &lt;chr&gt; "Seven (feat. Latto) (Explicit Ver.)", "LALA"…
+$ artist_s_name            &lt;chr&gt; "Latto, Jung Kook", "Myke Towers", "Olivia Ro…
+$ artist_count             &lt;dbl&gt; 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, …
+$ released_year            &lt;dbl&gt; 2023, 2023, 2023, 2019, 2023, 2023, 2023, 202…
+$ released_month           &lt;dbl&gt; 7, 3, 6, 8, 5, 6, 3, 7, 5, 3, 4, 7, 1, 4, 3, …
+$ released_day             &lt;dbl&gt; 14, 23, 30, 23, 18, 1, 16, 7, 15, 17, 17, 7, …
+$ in_spotify_playlists     &lt;dbl&gt; 553, 1474, 1397, 7858, 3133, 2186, 3090, 714,…
+$ in_spotify_charts        &lt;dbl&gt; 147, 48, 113, 100, 50, 91, 50, 43, 83, 44, 40…
+$ streams                  &lt;dbl&gt; 141381703, 133716286, 140003974, 800840817, 3…
+$ in_apple_playlists       &lt;dbl&gt; 43, 48, 94, 116, 84, 67, 34, 25, 60, 49, 41, …
+$ in_apple_charts          &lt;dbl&gt; 263, 126, 207, 207, 133, 213, 222, 89, 210, 1…
+$ in_deezer_playlists      &lt;dbl&gt; 45, 58, 91, 125, 87, 88, 43, 30, 48, 66, 54, …
+$ in_deezer_charts         &lt;dbl&gt; 10, 14, 14, 12, 15, 17, 13, 13, 11, 13, 12, 5…
+$ in_shazam_charts         &lt;dbl&gt; 826, 382, 949, 548, 425, 946, 418, 194, 953, …
+$ bpm                      &lt;dbl&gt; 125, 92, 138, 170, 144, 141, 148, 100, 130, 1…
+$ key                      &lt;chr&gt; "B", "C#", "F", "A", "A", "C#", "F", "F", "C#…
+$ mode                     &lt;chr&gt; "Major", "Major", "Major", "Major", "Minor", …
+$ danceability_percent     &lt;dbl&gt; 80, 71, 51, 55, 65, 92, 67, 67, 85, 81, 57, 7…
+$ valence_percent          &lt;dbl&gt; 89, 61, 32, 58, 23, 66, 83, 26, 22, 56, 56, 5…
+$ energy_percent           &lt;dbl&gt; 83, 74, 53, 72, 80, 58, 76, 71, 62, 48, 72, 8…
+$ acousticness_percent     &lt;dbl&gt; 31, 7, 17, 11, 14, 19, 48, 37, 12, 21, 23, 18…
+$ instrumentalness_percent &lt;dbl&gt; 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ liveness_percent         &lt;dbl&gt; 8, 10, 31, 11, 11, 8, 8, 11, 28, 8, 27, 15, 3…
+$ speechiness_percent      &lt;dbl&gt; 4, 4, 6, 15, 6, 24, 3, 4, 9, 33, 5, 7, 7, 3, …</code></pre>
+</div>
+</div>
+<ul>
+<li><p><code>streams</code> aparece como variável character apesar de apresentar observações numéricas e parece representar uma contagem</p></li>
+<li><p>Uma inspeção nas observações da variável <code>streams</code> revelou uma observação contendo um possivel erro de nessa observação. Tal erro foi subtituido por um valor ausente e então os dados foram importados novamente.</p></li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  enoqueR<span class="sc">::</span><span class="fu">dataset_var_info</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(tipo, n_distinct) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div id="bkxlszplyr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bkxlszplyr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bkxlszplyr thead, #bkxlszplyr tbody, #bkxlszplyr tfoot, #bkxlszplyr tr, #bkxlszplyr td, #bkxlszplyr th {
+  border-style: none;
+}
+
+#bkxlszplyr p {
+  margin: 0;
+  padding: 0;
+}
+
+#bkxlszplyr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bkxlszplyr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bkxlszplyr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bkxlszplyr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bkxlszplyr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bkxlszplyr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bkxlszplyr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bkxlszplyr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bkxlszplyr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bkxlszplyr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bkxlszplyr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bkxlszplyr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bkxlszplyr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bkxlszplyr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bkxlszplyr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkxlszplyr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bkxlszplyr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bkxlszplyr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bkxlszplyr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkxlszplyr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bkxlszplyr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkxlszplyr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bkxlszplyr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkxlszplyr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bkxlszplyr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkxlszplyr .gt_left {
+  text-align: left;
+}
+
+#bkxlszplyr .gt_center {
+  text-align: center;
+}
+
+#bkxlszplyr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bkxlszplyr .gt_font_normal {
+  font-weight: normal;
+}
+
+#bkxlszplyr .gt_font_bold {
+  font-weight: bold;
+}
+
+#bkxlszplyr .gt_font_italic {
+  font-style: italic;
+}
+
+#bkxlszplyr .gt_super {
+  font-size: 65%;
+}
+
+#bkxlszplyr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bkxlszplyr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bkxlszplyr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bkxlszplyr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bkxlszplyr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bkxlszplyr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bkxlszplyr .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="variavel">variavel</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="tipo">tipo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n">n</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n_miss">n_miss</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n_distinct">n_distinct</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="w">w</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p">p</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="variavel" class="gt_row gt_left">mode</td>
+<td headers="tipo" class="gt_row gt_left">character</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">2</td>
+<td headers="w" class="gt_row gt_right">NA</td>
+<td headers="p" class="gt_row gt_right">NA</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">key</td>
+<td headers="tipo" class="gt_row gt_left">character</td>
+<td headers="n" class="gt_row gt_right">858</td>
+<td headers="n_miss" class="gt_row gt_right">95</td>
+<td headers="n_distinct" class="gt_row gt_right">12</td>
+<td headers="w" class="gt_row gt_right">NA</td>
+<td headers="p" class="gt_row gt_right">NA</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">artist_s_name</td>
+<td headers="tipo" class="gt_row gt_left">character</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">645</td>
+<td headers="w" class="gt_row gt_right">NA</td>
+<td headers="p" class="gt_row gt_right">NA</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">track_name</td>
+<td headers="tipo" class="gt_row gt_left">character</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">943</td>
+<td headers="w" class="gt_row gt_right">NA</td>
+<td headers="p" class="gt_row gt_right">NA</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">artist_count</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">8</td>
+<td headers="w" class="gt_row gt_right">0.64</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">released_month</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">12</td>
+<td headers="w" class="gt_row gt_right">0.93</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">released_day</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">31</td>
+<td headers="w" class="gt_row gt_right">0.94</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">in_deezer_charts</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">34</td>
+<td headers="w" class="gt_row gt_right">0.50</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">instrumentalness_percent</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">39</td>
+<td headers="w" class="gt_row gt_right">0.19</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">speechiness_percent</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">48</td>
+<td headers="w" class="gt_row gt_right">0.71</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">released_year</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">50</td>
+<td headers="w" class="gt_row gt_right">0.43</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">liveness_percent</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">68</td>
+<td headers="w" class="gt_row gt_right">0.77</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">danceability_percent</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">72</td>
+<td headers="w" class="gt_row gt_right">0.98</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">energy_percent</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">80</td>
+<td headers="w" class="gt_row gt_right">0.98</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">in_spotify_charts</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">82</td>
+<td headers="w" class="gt_row gt_right">0.67</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">valence_percent</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">94</td>
+<td headers="w" class="gt_row gt_right">0.98</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">acousticness_percent</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">98</td>
+<td headers="w" class="gt_row gt_right">0.87</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">bpm</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">124</td>
+<td headers="w" class="gt_row gt_right">0.98</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">in_apple_charts</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">172</td>
+<td headers="w" class="gt_row gt_right">0.88</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">in_shazam_charts</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">903</td>
+<td headers="n_miss" class="gt_row gt_right">50</td>
+<td headers="n_distinct" class="gt_row gt_right">199</td>
+<td headers="w" class="gt_row gt_right">0.41</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">in_apple_playlists</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">234</td>
+<td headers="w" class="gt_row gt_right">0.72</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">in_deezer_playlists</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">348</td>
+<td headers="w" class="gt_row gt_right">0.36</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">in_spotify_playlists</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">953</td>
+<td headers="n_miss" class="gt_row gt_right">0</td>
+<td headers="n_distinct" class="gt_row gt_right">879</td>
+<td headers="w" class="gt_row gt_right">0.62</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+    <tr><td headers="variavel" class="gt_row gt_left">streams</td>
+<td headers="tipo" class="gt_row gt_left">numeric</td>
+<td headers="n" class="gt_row gt_right">952</td>
+<td headers="n_miss" class="gt_row gt_right">1</td>
+<td headers="n_distinct" class="gt_row gt_right">949</td>
+<td headers="w" class="gt_row gt_right">0.76</td>
+<td headers="p" class="gt_row gt_right">0.00</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>Nenhuma das varíaveis numéricas apresenta distribuição normal.</li>
+<li>Das 145 celulas vazias <strong>?@tbl-overall</strong> 95 se encontram na coluna <code>key</code> e e 50 na coluna `in_shazam_charts.</li>
+<li>A variável <code>track_name</code> não é suficiente para servir de nome para as observações (945 != 955).</li>
+<li>As colunas <code>track_name</code>, <code>artist_s_name</code> e <code>streams</code>apresentam valores distintos elevados. Deve ser buscar abordar tais colunas como caracteristica de denominação de cada observação.</li>
+<li>As demais colunas de caractere (<code>key</code>e <code>mode</code>) podem ser consideradas fatores</li>
+<li>colunas de data podem ser transformadas em uma coluna única</li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">=</span> dados <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">key =</span> <span class="fu">as.factor</span>(key),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="fu">as.factor</span>(mode),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">release_date =</span> <span class="fu">as_date</span>(<span class="fu">paste0</span>(released_year,<span class="st">'-'</span>,released_month,<span class="st">'-'</span>,released_day))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="análise-exploratória" class="level1">
+<h1>Análise Exploratória</h1>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>release_date) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">variaveis</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  reactable<span class="sc">::</span><span class="fu">reactable</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">defaultColDef =</span> <span class="fu">colDef</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="fu">colFormat</span>(<span class="at">digits =</span> <span class="dv">4</span>))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div class="reactable html-widget html-fill-item" id="htmlwidget-7803b56468bfa92f2eff" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7803b56468bfa92f2eff">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"name":["n","min","max","median","q1","q3","iqr","mad","mean","sd","se","ci","var","range","cv","distinct","ausente","ausente_pct","zeros","zeros_pct","q.5","q.95","curtose","assimetria"],"acousticness_percent":[953,0,97,18,6,43,37,22.239,27.058,25.996,0.842,1.653,675.792016,97,24.9756824599009,98,0,0,60,0.0629590766002099,0,81.4,2.80263348213076,0.950961889108647],"artist_count":[953,1,8,1,1,2,1,0,1.556,0.893,0.029,0.057,0.797449,7,0.512499357326478,8,0,0,0,0,1,3,13.3061049665874,2.54002621932898],"bpm":[953,65,206,121,100,140,40,31.135,122.54,28.058,0.909,1.784,787.251364,141,6.42444396931614,124,0,0,0,0,81,174,2.59677373283134,0.412594824509775],"danceability_percent":[953,23,96,69,57,78,21,14.826,66.97,14.631,0.474,0.93,214.066161,73,3.19644857398835,72,0,0,0,0,40.6,89,2.6618924551667,-0.435191771397039],"energy_percent":[953,9,97,66,53,77,24,17.791,64.279,16.551,0.536,1.052,273.935601,88,4.26166556729258,80,0,0,0,0,34.6,89,2.73509041614272,-0.445696288721271],"in_apple_charts":[953,0,275,38,7,87,80,51.891,51.909,50.63,1.64,3.219,2563.3969,275,49.3825136296211,172,0,0,100,0.104931794333683,0,142.4,3.87957196692127,1.03361900121176],"in_apple_playlists":[953,0,672,34,13,88,75,40.03,67.812,86.441,2.8,5.495,7472.046481,672,110.187672992981,234,0,0,23,0.0241343126967471,2,241.4,10.8741836526874,2.47009175066659],"in_deezer_charts":[953,0,58,0,0,2,2,0,2.666,6.036,0.196,0.384,36.433296,58,13.6659024756189,34,0,0,558,0.585519412381952,0,15,21.9151459213008,3.76016466299687],"in_deezer_playlists":[953,0,12367,44,13,164,151,54.856,385.188,1130.536,36.622,71.868,1278111.647296,12367,3318.15022092069,348,0,0,24,0.0251836306400839,2,2265,32.4334012898435,4.95648148992587],"in_shazam_charts":[903,0,1451,2,0,37,37,2.965,59.996,161.161,5.363,10.526,25972.867921,1451,432.909992682846,199,50,0.0553709856035437,"NA","NA",0,311.9,28.8842004108857,4.69464418070859],"in_spotify_charts":[953,0,147,3,0,16,16,4.448,12.009,19.576,0.634,1.244,383.219776,147,31.9110480472979,82,0,0,405,0.424973767051417,0,50,11.4567217893754,2.57641867685036],"in_spotify_playlists":[953,31,52898,2224,875,5542,4667,2364.747,5200.125,7897.609,255.829,502.053,62372227.916881,52867,11994.3708885615,879,0,0,0,0,268.2,22267.4,12.818089637156,2.9245138476578],"instrumentalness_percent":[953,0,91,0,0,0,0,0,1.581,8.41,0.272,0.535,70.7281,91,44.7363061353574,39,0,0,866,0.908709338929696,0,5,59.3325989171527,7.11299898856884],"liveness_percent":[953,3,97,12,10,24,14,5.93,18.213,13.711,0.444,0.872,187.991521,94,10.3218317136112,68,0,0,0,0,6,44.4,8.67816903390324,2.10096650815347],"released_day":[953,1,31,13,6,22,16,11.861,13.931,9.202,0.298,0.585,84.676804,30,6.07830048094179,31,0,0,0,0,1,29,1.76576311280811,0.163843665089952],"released_month":[953,1,12,6,3,9,6,4.448,6.034,3.566,0.116,0.227,12.716356,11,2.10745044746437,12,0,0,0,0,1,12,1.80418172351614,0.184467504382714],"released_year":[953,1930,2023,2022,2020,2022,2,1.483,2018.238,11.116,0.36,0.707,123.565456,93,0.0612244224913018,50,0,0,0,0,1999,2023,23.3996390603122,-4.2853589591527],"speechiness_percent":[953,2,64,6,4,11,7,2.965,10.131,9.913,0.321,0.63,98.267569,62,9.69969094857369,48,0,0,0,0,3,33,6.35045872922052,1.93162188752986],"streams":[952,2762,3703895074,290530915,141636175,673869022,532232847,278372431.144,514137424.939,566856949.039,18371939.254,36054225.491,3.21326800673803e+17,3703892312,624982320.07119,949,1,0.00105042016806723,"NA","NA",53672607.85,1757173531.1,7.34171438095849,1.9974378388929],"valence_percent":[953,4,97,51,32,70,38,28.169,51.431,23.481,0.761,1.493,551.357361,93,10.7203313371313,94,0,0,0,0,14,90,2.05929550256476,0.00821058753712152],"artist_s_name":[953,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",645,0,0,"NA","NA","NA","NA","NA","NA"],"key":[858,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",12,95,0.110722610722611,"NA","NA","NA","NA","NA","NA"],"mode":[953,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",2,0,0,"NA","NA","NA","NA","NA","NA"],"track_name":[953,"NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA","NA",943,0,0,"NA","NA","NA","NA","NA","NA"]},"columns":[{"id":"name","name":"name","type":"character","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"acousticness_percent","name":"acousticness_percent","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"artist_count","name":"artist_count","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"bpm","name":"bpm","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"danceability_percent","name":"danceability_percent","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"energy_percent","name":"energy_percent","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"in_apple_charts","name":"in_apple_charts","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"in_apple_playlists","name":"in_apple_playlists","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"in_deezer_charts","name":"in_deezer_charts","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"in_deezer_playlists","name":"in_deezer_playlists","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"in_shazam_charts","name":"in_shazam_charts","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"in_spotify_charts","name":"in_spotify_charts","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"in_spotify_playlists","name":"in_spotify_playlists","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"instrumentalness_percent","name":"instrumentalness_percent","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"liveness_percent","name":"liveness_percent","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"released_day","name":"released_day","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"released_month","name":"released_month","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"released_year","name":"released_year","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"speechiness_percent","name":"speechiness_percent","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"streams","name":"streams","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"valence_percent","name":"valence_percent","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"artist_s_name","name":"artist_s_name","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"key","name":"key","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"mode","name":"mode","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}},{"id":"track_name","name":"track_name","type":"numeric","format":{"cell":{"digits":4},"aggregated":{"digits":4}}}],"dataKey":"343a9a16dd707cb16d6e190a5081b339"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="análise-visual-univariada" class="level2">
+<h2 class="anchored" data-anchor-id="análise-visual-univariada">Análise visual univariada</h2>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">'white'</span>, <span class="at">fill =</span> <span class="st">'green4'</span>) <span class="sc">+</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">'free'</span>) <span class="sc">+</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_test</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">'in_'</span>), <span class="fu">contains</span>(<span class="st">'percent'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(name, <span class="st">'percent'</span>), <span class="st">'song info'</span>, <span class="st">'app info'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">'green4'</span>)  <span class="sc">+</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_test</span>() <span class="sc">+</span> </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>tipo, <span class="at">scales =</span> <span class="st">'free'</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dados %&gt;% </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(where(is.factor)) %&gt;% </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   names() %&gt;% </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   map(.f = function(x){</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     tibble("{{x}}" := dados %&gt;% pull({{x}})) %&gt;% </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   })</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">key =</span> <span class="fu">factor</span>(key, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"C#"</span>, <span class="st">"D"</span>,<span class="st">"D#"</span>,<span class="st">"E"</span>,<span class="st">"F"</span>,<span class="st">"F#"</span>,<span class="st">"G"</span>,<span class="st">"G#"</span>,<span class="st">"A"</span>,<span class="st">"A#"</span>,<span class="st">"B"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.factor)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(name, value) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">'gray50'</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span><span class="st">'free'</span>) <span class="sc">+</span> </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_test</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+</section>
+<section id="anláise-bidimensional" class="level2">
+<h2 class="anchored" data-anchor-id="anláise-bidimensional">Anláise bidimensional</h2>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(bpm, <span class="fu">contains</span>(<span class="st">'percent'</span>), <span class="fu">starts_with</span>(<span class="st">'in'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">method =</span> <span class="st">'spearman'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">melt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Var2, <span class="at">y =</span> Var1, <span class="at">fill =</span> value, <span class="at">label =</span> <span class="fu">round</span>(value, <span class="dv">2</span>))) <span class="sc">+</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">'blue3'</span>, <span class="at">mid =</span> <span class="st">'lightyellow'</span>, <span class="at">high =</span> <span class="st">'red'</span>,<span class="at">midpoint =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">'Spearman'</span>) <span class="sc">+</span> </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">color =</span> <span class="st">'black'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<ul>
+<li>As variáveis relacionadas a contagem de presença das músicas em <em>charts</em> e <em>playlists</em> de diferentes serviços de streaming de música apresentaram correalações positivas que variam ao redor de 0.5 de correlação. in_deezer_playlists &amp; in_spotify_playlists apresentaram a maior correlação positiva (0.84) e acousticness_percent &amp; energy_percent a maior correlação negativa (-0.46).</li>
+</ul>
+</section>
+</section>
+<section id="section" class="level1">
+<h1></h1>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Código fonte</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Spotify 2023: Análise das músicas mais populares"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Enoque Filho"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2023-12-21 </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [EDA, kaggle, R, Análise Descritiva]</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: litera</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-link: true</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">    #code-block-bg: "lightblue"</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">    #code-block-border-left: "#31BAE9"</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> pt</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="an">dpi:</span><span class="co"> 300</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="an">fig-align:</span><span class="co"> center</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="an">df-print:</span><span class="co"> paged</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="an">fig-width:</span><span class="co"> 12</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introdução</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setup</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="co"># pacotes = c('tidyverse', 'gt', 'reactable')</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="co"># enoqueR_dependencias = c("tidyverse", "gtsummary", "pryr", "rstatix", "moments")</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c(pacotes, enoqueR_dependencias))</span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github('enoqueR/enoqueR)</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(enoqueR) </span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reactable)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conjunto de Dados</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; *This dataset contains a comprehensive list of the most famous songs of</span></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2023 as listed on Spotify. The dataset offers a wealth of features</span></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; beyond what is typically available in similar datasets. It provides</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; insights into each song's attributes, popularity, and presence on</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; various music platforms. The dataset includes information such as **track</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; name, artist(s) name, release date, Spotify playlists and charts,</span></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; streaming statistics, Apple Music presence, Deezer presence, Shazam</span></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; charts, and various audio features**.* - Fonte: </span><span class="co">[</span><span class="ot">https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023</span><span class="co">](#0)</span></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| df-print: paged</span></span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a><span class="co"># carregando o conjunto de dados</span></span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a><span class="co"># disponivel em: https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023</span></span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> </span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'spotify-2023.csv'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">30</span>)</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-overall</span></span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">%&gt;%</span> enoqueR<span class="sc">::</span><span class="fu">overall_info</span>(),</span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>  dados <span class="sc">%&gt;%</span> enoqueR<span class="sc">::</span><span class="fu">overall_tipos</span>()</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>O conjunto de dados apresenta um total de 24 colunas, 955 observações e ausência de linhas duplicadas. Dentre as 24 colunas, 19 são numéricas e 5 são de caractere.</span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`streams`</span> aparece como variável character apesar de apresentar observações numéricas e parece representar uma contagem</span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Uma inspeção nas observações da variável <span class="in">`streams`</span> revelou uma observação contendo um possivel erro de nessa observação. Tal erro foi subtituido por um valor ausente e então os dados foram importados novamente.</span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>  enoqueR<span class="sc">::</span><span class="fu">dataset_var_info</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(tipo, n_distinct) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(<span class="at">columns =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Nenhuma das varíaveis numéricas apresenta distribuição normal.</span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Das 145 celulas vazias @tbl-overall 95 se encontram na coluna <span class="in">`key`</span> e e 50 na coluna <span class="sc">\`</span>in_shazam_charts.</span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A variável <span class="in">`track_name`</span> não é suficiente para servir de nome para as observações (945 != 955).</span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>As colunas <span class="in">`track_name`</span>, <span class="in">`artist_s_name`</span> e <span class="in">`streams`</span>apresentam valores distintos elevados. Deve ser buscar abordar tais colunas como caracteristica de denominação de cada observação.</span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>As demais colunas de caractere (<span class="in">`key`</span>e <span class="in">`mode`</span>) podem ser consideradas fatores</span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>colunas de data podem ser transformadas em uma coluna única</span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">=</span> dados <span class="sc">%&gt;%</span> </span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">key =</span> <span class="fu">as.factor</span>(key),</span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">mode =</span> <span class="fu">as.factor</span>(mode),</span>
+<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">release_date =</span> <span class="fu">as_date</span>(<span class="fu">paste0</span>(released_year,<span class="st">'-'</span>,released_month,<span class="st">'-'</span>,released_day))</span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análise Exploratória</span></span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>release_date) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">variaveis</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a>  reactable<span class="sc">::</span><span class="fu">reactable</span>(</span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a>     <span class="at">defaultColDef =</span> <span class="fu">colDef</span>(</span>
+<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="fu">colFormat</span>(<span class="at">digits =</span> <span class="dv">4</span>))</span>
+<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a><span class="fu">## Análise visual univariada</span></span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span> </span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">'white'</span>, <span class="at">fill =</span> <span class="st">'green4'</span>) <span class="sc">+</span> </span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">'free'</span>) <span class="sc">+</span> </span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_test</span>()</span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width = 8,</span></span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.height = 5</span></span>
+<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">'in_'</span>), <span class="fu">contains</span>(<span class="st">'percent'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(name, <span class="st">'percent'</span>), <span class="st">'song info'</span>, <span class="st">'app info'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">'green4'</span>)  <span class="sc">+</span> </span>
+<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_test</span>() <span class="sc">+</span> </span>
+<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>tipo, <span class="at">scales =</span> <span class="st">'free'</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span>
+<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a><span class="co"># dados %&gt;% </span></span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(where(is.factor)) %&gt;% </span></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a><span class="co">#   names() %&gt;% </span></span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a><span class="co">#   map(.f = function(x){</span></span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a><span class="co">#     tibble("{{x}}" := dados %&gt;% pull({{x}})) %&gt;% </span></span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a><span class="co">#   })</span></span>
+<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">key =</span> <span class="fu">factor</span>(key, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"C#"</span>, <span class="st">"D"</span>,<span class="st">"D#"</span>,<span class="st">"E"</span>,<span class="st">"F"</span>,<span class="st">"F#"</span>,<span class="st">"G"</span>,<span class="st">"G#"</span>,<span class="st">"A"</span>,<span class="st">"A#"</span>,<span class="st">"B"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.factor)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(name, value) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">color =</span> <span class="st">'gray50'</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span><span class="st">'free'</span>) <span class="sc">+</span> </span>
+<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_test</span>()</span>
+<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a><span class="fu">## Anláise bidimensional</span></span>
+<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.width: 12</span></span>
+<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.height: 7</span></span>
+<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(bpm, <span class="fu">contains</span>(<span class="st">'percent'</span>), <span class="fu">starts_with</span>(<span class="st">'in'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">method =</span> <span class="st">'spearman'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">melt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb14-205"><a href="#cb14-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Var2, <span class="at">y =</span> Var1, <span class="at">fill =</span> value, <span class="at">label =</span> <span class="fu">round</span>(value, <span class="dv">2</span>))) <span class="sc">+</span> </span>
+<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">'blue3'</span>, <span class="at">mid =</span> <span class="st">'lightyellow'</span>, <span class="at">high =</span> <span class="st">'red'</span>,<span class="at">midpoint =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)) <span class="sc">+</span></span>
+<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">'Spearman'</span>) <span class="sc">+</span> </span>
+<span id="cb14-211"><a href="#cb14-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">color =</span> <span class="st">'black'</span>)</span>
+<span id="cb14-212"><a href="#cb14-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-213"><a href="#cb14-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-214"><a href="#cb14-214" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>As variáveis relacionadas a contagem de presença das músicas em *charts* e *playlists* de diferentes serviços de streaming de música apresentaram correalações positivas que variam ao redor de 0.5 de correlação. in_deezer_playlists &amp; in_spotify_playlists apresentaram a maior correlação positiva (0.84) e acousticness_percent &amp; energy_percent a maior correlação negativa (-0.46).</span>
+<span id="cb14-215"><a href="#cb14-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-216"><a href="#cb14-216" aria-hidden="true" tabindex="-1"></a><span class="fu"># </span></span>
+</code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Criado com Posit [Quarto](https://quarto.org/)
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

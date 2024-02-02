@@ -1,0 +1,192 @@
+---
+editor: visual
+title: "Spotify 2023: Análise das músicas mais populares"
+author: "Enoque Filho"
+date: 2023-12-21 
+categories: [EDA, kaggle, R, Análise Descritiva]
+format: 
+  html:
+    theme: litera
+    toc: true
+    code-link: true
+    code-fold: show
+    code-tools: true
+    #code-block-bg: "lightblue"
+    #code-block-border-left: "#31BAE9"
+lang: pt
+execute:
+  warning: false
+  message: false
+dpi: 300
+fig-align: center
+df-print: paged
+fig-width: 12
+
+---
+
+# Introdução
+
+## Setup
+
+```{r}
+# pacotes = c('tidyverse', 'gt', 'reactable')
+# enoqueR_dependencias = c("tidyverse", "gtsummary", "pryr", "rstatix", "moments")
+# install.packages(c(pacotes, enoqueR_dependencias))
+# remotes::install_github('enoqueR/enoqueR)
+
+library(tidyverse)
+library(enoqueR) 
+library(gt)
+library(reactable)
+
+```
+
+## Conjunto de Dados
+
+> *This dataset contains a comprehensive list of the most famous songs of
+> 2023 as listed on Spotify. The dataset offers a wealth of features
+> beyond what is typically available in similar datasets. It provides
+> insights into each song's attributes, popularity, and presence on
+> various music platforms. The dataset includes information such as **track
+> name, artist(s) name, release date, Spotify playlists and charts,
+> streaming statistics, Apple Music presence, Deezer presence, Shazam
+> charts, and various audio features**.* - Fonte: [https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023](#0)
+
+```{r}
+#| df-print: paged
+# carregando o conjunto de dados
+# disponivel em: https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023
+
+dados <- 
+  readr::read_csv('spotify-2023.csv') %>% 
+  janitor::clean_names()
+
+dados %>% head(30)
+```
+
+```{r}
+#| label: tbl-overall
+bind_rows(
+  dados %>% enoqueR::overall_info(),
+  dados %>% enoqueR::overall_tipos()
+)
+```
+
+O conjunto de dados apresenta um total de 24 colunas, 955 observações e ausência de linhas duplicadas. Dentre as 24 colunas, 19 são numéricas e 5 são de caractere.
+
+```{r}
+dados %>% glimpse()
+```
+
+-   `streams` aparece como variável character apesar de apresentar observações numéricas e parece representar uma contagem
+
+-   Uma inspeção nas observações da variável `streams` revelou uma observação contendo um possivel erro de nessa observação. Tal erro foi subtituido por um valor ausente e então os dados foram importados novamente.
+
+```{r}
+dados %>% 
+  enoqueR::dataset_var_info() %>% 
+  as_tibble() %>% 
+  arrange(tipo, n_distinct) %>% 
+  gt() %>% 
+  fmt_number(columns = 6:7)
+```
+
+-   Nenhuma das varíaveis numéricas apresenta distribuição normal.
+-   Das 145 celulas vazias @tbl-overall 95 se encontram na coluna `key` e e 50 na coluna \`in_shazam_charts.
+-   A variável `track_name` não é suficiente para servir de nome para as observações (945 != 955).
+-   As colunas `track_name`, `artist_s_name` e `streams`apresentam valores distintos elevados. Deve ser buscar abordar tais colunas como caracteristica de denominação de cada observação.
+-   As demais colunas de caractere (`key`e `mode`) podem ser consideradas fatores
+-   colunas de data podem ser transformadas em uma coluna única
+
+```{r}
+dados = dados %>% 
+  mutate(
+    key = as.factor(key),
+    mode = as.factor(mode),
+    release_date = as_date(paste0(released_year,'-',released_month,'-',released_day))
+  )
+```
+
+# Análise Exploratória
+
+```{r}
+dados %>% 
+  select(-release_date) %>% 
+  variaveis() %>% 
+  reactable::reactable(
+     defaultColDef = colDef(
+    format = colFormat(digits = 4))
+    )
+```
+
+## Análise visual univariada
+
+```{r}
+dados %>% 
+  select(where(is.numeric)) %>% 
+  pivot_longer(everything()) %>% 
+    drop_na() %>% 
+  ggplot(aes(x = value)) + 
+  geom_histogram(color = 'white', fill = 'green4') + 
+  facet_wrap(~name, scales = 'free') + 
+  theme_test()
+```
+
+```{r}
+#| fig.width = 8,
+#| fig.height = 5
+dados %>% 
+  select(where(is.numeric)) %>% 
+  select(starts_with('in_'), contains('percent')) %>% 
+  pivot_longer(everything()) %>% 
+  mutate(tipo = ifelse(str_detect(name, 'percent'), 'song info', 'app info')) %>% 
+  ggplot(aes(x = name, y = value)) +
+  geom_boxplot(color = 'green4')  + 
+  theme_test() + 
+  facet_wrap(~tipo, scales = 'free', ncol = 1) + 
+  coord_flip()
+```
+
+```{r}
+# dados %>% 
+#   select(where(is.factor)) %>% 
+#   names() %>% 
+#   map(.f = function(x){
+#     tibble("{{x}}" := dados %>% pull({{x}})) %>% 
+#   })
+```
+
+```{r}
+dados %>% 
+  mutate(key = factor(key, levels = c("C#", "D","D#","E","F","F#","G","G#","A","A#","B"))) %>% 
+  select(where(is.factor)) %>% 
+  pivot_longer(everything()) %>% 
+  count(name, value) %>% 
+  ggplot(aes(x = value, y = n)) + 
+  geom_col(color = 'gray50', alpha = 0.5) +
+  facet_wrap(~name, ncol = 2, scales ='free') + 
+  theme_test()
+```
+
+## Anláise bidimensional
+
+```{r}
+#| fig.width: 12
+#| fig.height: 7
+dados %>% 
+  select(bpm, contains('percent'), starts_with('in')) %>% 
+  drop_na() %>% 
+  cor(method = 'spearman') %>% 
+  reshape2::melt() %>% 
+  ggplot(aes(x = Var2, y = Var1, fill = value, label = round(value, 2))) + 
+  geom_tile() + 
+  theme_minimal() + 
+  scale_fill_gradient2(low = 'blue3', mid = 'lightyellow', high = 'red',midpoint = 0) + 
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(fill = 'Spearman') + 
+  geom_text(color = 'black')
+```
+
+-   As variáveis relacionadas a contagem de presença das músicas em *charts* e *playlists* de diferentes serviços de streaming de música apresentaram correalações positivas que variam ao redor de 0.5 de correlação. in_deezer_playlists & in_spotify_playlists apresentaram a maior correlação positiva (0.84) e acousticness_percent & energy_percent a maior correlação negativa (-0.46).
+
+# 

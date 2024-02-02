@@ -3,21 +3,43 @@ project:
   output-dir: docs
 
 website:
+  #favicon: "images/linkedinpic.jpg"
   title: "Enoque Filho"
   navbar:
+    background: primary
+    #foreground: secondary
     left:
-      - href: index.qmd
-        text: Pagina Incial
-      - projetos.qmd
+      - icon: house
+        href: index.qmd
+        text: Sobre mim
+      - icon: bar-chart-line
+        href: projetos.qmd
+    right:
+      - icon: github
+        href: "https://github.com/enoque-filho"
+        aria-label: GitHub
+      - icon: linkedin
+        href: "https://linkedin.com/in/enoque-filho-70200b183"
+        aria-label: LinkedIn
+  page-footer:
+    background: primary
+    center: 
+      - text: |
+          Criado com Posit [Quarto](https://quarto.org/)
 
 format: 
   html:
+    #css: styles.css
     theme:
       light: flatly
       dark: darkly
     highlight-style: nord
-    css: styles.css
     toc: true
+    toc-title: 'Nesta pagina'
+    author:
+      - name: "Enoque Filho"
+      - email: "enoquefilhomail@gmail.com"
 
+
+  
 editor: visual
-

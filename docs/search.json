@@ -4,14 +4,14 @@
     "href": "projetos.html",
     "title": "Projetos",
     "section": "",
-    "text": "Lista de projetos que eu já realizei"
+    "text": "Spotify 2023: Análise das músicas mais populares\n\n\n\n\n\n\n\nEDA\n\n\nkaggle\n\n\nR\n\n\nAnálise Descritiva\n\n\n\n\n\n\n\n\n\n\n\nDec 21, 2023\n\n\nEnoque Filho\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Pagina Incial",
+    "title": "Sobre mim",
     "section": "",
-    "text": "Me chamo Enoque Filho, sou graduando do curso de Bacharelado Em Estatística na Universidade Federal do Piauí (UFPI) com espectativas de concluir em 2024.\nTenho interesse por Estatística, Metodologia Cientifica, Psicologia, Psicometria, Programação, Linguagem R. tidyverse, R Markdown e Quarto."
+    "text": "Este portfólio está em construção!"
   },
   {
     "objectID": "index.html#um-pouco-mais-sobre-mim",
@@ -44,29 +44,92 @@
   {
     "objectID": "index.html#resumo-de-habilidades",
     "href": "index.html#resumo-de-habilidades",
-    "title": "Pagina Incial",
+    "title": "Sobre mim",
     "section": "Resumo de Habilidades",
-    "text": "Resumo de Habilidades\n\nLinguagem R: Avançado\nExcel: Intermediário\nInglês: Intermediário"
+    "text": "Resumo de Habilidades\n\nEstatística | Analise de Dados\nR (Linguagem de Programação) Avançado\nExcel: Intermediário\nPacote Office\nInglês: Intermediário"
   },
   {
     "objectID": "index.html#entre-em-contato",
     "href": "index.html#entre-em-contato",
-    "title": "Pagina Incial",
+    "title": "Sobre mim",
     "section": "Entre em contato",
-    "text": "Entre em contato\n\nWhatsApp: (86) 99431-1263\nGmail: enoquefilho@gmail.com\nLinkedIn: &lt;linkedin.com/in/enoque-filho-70200b183&gt;\nGithub: https://github.com/enoque-filho\nInstagram: @enokesan"
+    "text": "Entre em contato\n\n: (86) 99431-1263\n: enoquefilhomail@gmail.com"
   },
   {
     "objectID": "index.html#quem-sou",
     "href": "index.html#quem-sou",
-    "title": "Pagina Incial",
-    "section": "",
-    "text": "Me chamo Enoque Filho, sou graduando do curso de Bacharelado Em Estatística na Universidade Federal do Piauí (UFPI) com espectativas de concluir em 2024.\nTenho interesse por Estatística, Metodologia Cientifica, Psicologia, Psicometria, Programação, Linguagem R. tidyverse, R Markdown e Quarto."
+    "title": "Sobre mim",
+    "section": "Quem Sou",
+    "text": "Quem Sou\nMe chamo Enoque Filho, sou graduando do curso de Bacharelado Em Estatística na Universidade Federal do Piauí (UFPI) com espectativas de concluir em 2024.\nTenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional"
   },
   {
     "objectID": "index.html#formação",
     "href": "index.html#formação",
-    "title": "Pagina Incial",
+    "title": "Sobre mim",
     "section": "Formação",
-    "text": "Formação\n\n2019 - Atualmente: Bacharelado em Estatística pela UFPI"
+    "text": "Formação\nGraduação em Estatística pela UFPI | 2019 - Presente"
+  },
+  {
+    "objectID": "projetos.html#projetos",
+    "href": "projetos.html#projetos",
+    "title": "Projetos",
+    "section": "",
+    "text": "Por vir"
+  },
+  {
+    "objectID": "projetos.html#notebooks-no-kaggle.com",
+    "href": "projetos.html#notebooks-no-kaggle.com",
+    "title": "Projetos",
+    "section": "",
+    "text": "https://www.kaggle.com/enoquefilho"
+  },
+  {
+    "objectID": "posts/proj - eda-spotify-2023/index.html",
+    "href": "posts/proj - eda-spotify-2023/index.html",
+    "title": "Spotify 2023: Análise das músicas mais populares",
+    "section": "",
+    "text": "Código\n# pacotes = c('tidyverse', 'gt', 'reactable')\n# enoqueR_dependencias = c(\"tidyverse\", \"gtsummary\", \"pryr\", \"rstatix\", \"moments\")\n# install.packages(c(pacotes, enoqueR_dependencias))\n# remotes::install_github('enoqueR/enoqueR)\n\nlibrary(tidyverse)\nlibrary(enoqueR) \nlibrary(gt)\nlibrary(reactable)\n\n\n\n\n\n\nThis dataset contains a comprehensive list of the most famous songs of 2023 as listed on Spotify. The dataset offers a wealth of features beyond what is typically available in similar datasets. It provides insights into each song’s attributes, popularity, and presence on various music platforms. The dataset includes information such as track name, artist(s) name, release date, Spotify playlists and charts, streaming statistics, Apple Music presence, Deezer presence, Shazam charts, and various audio features. - Fonte: https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023\n\n\n\nCódigo\n# carregando o conjunto de dados\n# disponivel em: https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023\n\ndados &lt;- \n  readr::read_csv('spotify-2023.csv') %&gt;% \n  janitor::clean_names()\n\ndados %&gt;% head(30)\n\n\n\n\n  \n\n\n\n\n\nCódigo\nbind_rows(\n  dados %&gt;% enoqueR::overall_info(),\n  dados %&gt;% enoqueR::overall_tipos()\n)\n\n\n\n?(caption)\n\n\n\n\n\n  \n\n\n\n\n\nO conjunto de dados apresenta um total de 24 colunas, 955 observações e ausência de linhas duplicadas. Dentre as 24 colunas, 19 são numéricas e 5 são de caractere.\n\n\nCódigo\ndados %&gt;% glimpse()\n\n\nRows: 953\nColumns: 24\n$ track_name               &lt;chr&gt; \"Seven (feat. Latto) (Explicit Ver.)\", \"LALA\"…\n$ artist_s_name            &lt;chr&gt; \"Latto, Jung Kook\", \"Myke Towers\", \"Olivia Ro…\n$ artist_count             &lt;dbl&gt; 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, …\n$ released_year            &lt;dbl&gt; 2023, 2023, 2023, 2019, 2023, 2023, 2023, 202…\n$ released_month           &lt;dbl&gt; 7, 3, 6, 8, 5, 6, 3, 7, 5, 3, 4, 7, 1, 4, 3, …\n$ released_day             &lt;dbl&gt; 14, 23, 30, 23, 18, 1, 16, 7, 15, 17, 17, 7, …\n$ in_spotify_playlists     &lt;dbl&gt; 553, 1474, 1397, 7858, 3133, 2186, 3090, 714,…\n$ in_spotify_charts        &lt;dbl&gt; 147, 48, 113, 100, 50, 91, 50, 43, 83, 44, 40…\n$ streams                  &lt;dbl&gt; 141381703, 133716286, 140003974, 800840817, 3…\n$ in_apple_playlists       &lt;dbl&gt; 43, 48, 94, 116, 84, 67, 34, 25, 60, 49, 41, …\n$ in_apple_charts          &lt;dbl&gt; 263, 126, 207, 207, 133, 213, 222, 89, 210, 1…\n$ in_deezer_playlists      &lt;dbl&gt; 45, 58, 91, 125, 87, 88, 43, 30, 48, 66, 54, …\n$ in_deezer_charts         &lt;dbl&gt; 10, 14, 14, 12, 15, 17, 13, 13, 11, 13, 12, 5…\n$ in_shazam_charts         &lt;dbl&gt; 826, 382, 949, 548, 425, 946, 418, 194, 953, …\n$ bpm                      &lt;dbl&gt; 125, 92, 138, 170, 144, 141, 148, 100, 130, 1…\n$ key                      &lt;chr&gt; \"B\", \"C#\", \"F\", \"A\", \"A\", \"C#\", \"F\", \"F\", \"C#…\n$ mode                     &lt;chr&gt; \"Major\", \"Major\", \"Major\", \"Major\", \"Minor\", …\n$ danceability_percent     &lt;dbl&gt; 80, 71, 51, 55, 65, 92, 67, 67, 85, 81, 57, 7…\n$ valence_percent          &lt;dbl&gt; 89, 61, 32, 58, 23, 66, 83, 26, 22, 56, 56, 5…\n$ energy_percent           &lt;dbl&gt; 83, 74, 53, 72, 80, 58, 76, 71, 62, 48, 72, 8…\n$ acousticness_percent     &lt;dbl&gt; 31, 7, 17, 11, 14, 19, 48, 37, 12, 21, 23, 18…\n$ instrumentalness_percent &lt;dbl&gt; 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ liveness_percent         &lt;dbl&gt; 8, 10, 31, 11, 11, 8, 8, 11, 28, 8, 27, 15, 3…\n$ speechiness_percent      &lt;dbl&gt; 4, 4, 6, 15, 6, 24, 3, 4, 9, 33, 5, 7, 7, 3, …\n\n\n\nstreams aparece como variável character apesar de apresentar observações numéricas e parece representar uma contagem\nUma inspeção nas observações da variável streams revelou uma observação contendo um possivel erro de nessa observação. Tal erro foi subtituido por um valor ausente e então os dados foram importados novamente.\n\n\n\nCódigo\ndados %&gt;% \n  enoqueR::dataset_var_info() %&gt;% \n  as_tibble() %&gt;% \n  arrange(tipo, n_distinct) %&gt;% \n  gt() %&gt;% \n  fmt_number(columns = 6:7)\n\n\n\n\n\n\n  \n    \n      variavel\n      tipo\n      n\n      n_miss\n      n_distinct\n      w\n      p\n    \n  \n  \n    mode\ncharacter\n953\n0\n2\nNA\nNA\n    key\ncharacter\n858\n95\n12\nNA\nNA\n    artist_s_name\ncharacter\n953\n0\n645\nNA\nNA\n    track_name\ncharacter\n953\n0\n943\nNA\nNA\n    artist_count\nnumeric\n953\n0\n8\n0.64\n0.00\n    released_month\nnumeric\n953\n0\n12\n0.93\n0.00\n    released_day\nnumeric\n953\n0\n31\n0.94\n0.00\n    in_deezer_charts\nnumeric\n953\n0\n34\n0.50\n0.00\n    instrumentalness_percent\nnumeric\n953\n0\n39\n0.19\n0.00\n    speechiness_percent\nnumeric\n953\n0\n48\n0.71\n0.00\n    released_year\nnumeric\n953\n0\n50\n0.43\n0.00\n    liveness_percent\nnumeric\n953\n0\n68\n0.77\n0.00\n    danceability_percent\nnumeric\n953\n0\n72\n0.98\n0.00\n    energy_percent\nnumeric\n953\n0\n80\n0.98\n0.00\n    in_spotify_charts\nnumeric\n953\n0\n82\n0.67\n0.00\n    valence_percent\nnumeric\n953\n0\n94\n0.98\n0.00\n    acousticness_percent\nnumeric\n953\n0\n98\n0.87\n0.00\n    bpm\nnumeric\n953\n0\n124\n0.98\n0.00\n    in_apple_charts\nnumeric\n953\n0\n172\n0.88\n0.00\n    in_shazam_charts\nnumeric\n903\n50\n199\n0.41\n0.00\n    in_apple_playlists\nnumeric\n953\n0\n234\n0.72\n0.00\n    in_deezer_playlists\nnumeric\n953\n0\n348\n0.36\n0.00\n    in_spotify_playlists\nnumeric\n953\n0\n879\n0.62\n0.00\n    streams\nnumeric\n952\n1\n949\n0.76\n0.00\n  \n  \n  \n\n\n\n\n\nNenhuma das varíaveis numéricas apresenta distribuição normal.\nDas 145 celulas vazias ?@tbl-overall 95 se encontram na coluna key e e 50 na coluna `in_shazam_charts.\nA variável track_name não é suficiente para servir de nome para as observações (945 != 955).\nAs colunas track_name, artist_s_name e streamsapresentam valores distintos elevados. Deve ser buscar abordar tais colunas como caracteristica de denominação de cada observação.\nAs demais colunas de caractere (keye mode) podem ser consideradas fatores\ncolunas de data podem ser transformadas em uma coluna única\n\n\n\nCódigo\ndados = dados %&gt;% \n  mutate(\n    key = as.factor(key),\n    mode = as.factor(mode),\n    release_date = as_date(paste0(released_year,'-',released_month,'-',released_day))\n  )"
+  },
+  {
+    "objectID": "posts/proj - eda-spotify-2023/index.html#setup",
+    "href": "posts/proj - eda-spotify-2023/index.html#setup",
+    "title": "Spotify 2023: Análise das músicas mais populares",
+    "section": "",
+    "text": "Código\n# pacotes = c('tidyverse', 'gt', 'reactable')\n# enoqueR_dependencias = c(\"tidyverse\", \"gtsummary\", \"pryr\", \"rstatix\", \"moments\")\n# install.packages(c(pacotes, enoqueR_dependencias))\n# remotes::install_github('enoqueR/enoqueR)\n\nlibrary(tidyverse)\nlibrary(enoqueR) \nlibrary(gt)\nlibrary(reactable)"
+  },
+  {
+    "objectID": "posts/proj - eda-spotify-2023/index.html#conjunto-de-dados",
+    "href": "posts/proj - eda-spotify-2023/index.html#conjunto-de-dados",
+    "title": "Spotify 2023: Análise das músicas mais populares",
+    "section": "",
+    "text": "This dataset contains a comprehensive list of the most famous songs of 2023 as listed on Spotify. The dataset offers a wealth of features beyond what is typically available in similar datasets. It provides insights into each song’s attributes, popularity, and presence on various music platforms. The dataset includes information such as track name, artist(s) name, release date, Spotify playlists and charts, streaming statistics, Apple Music presence, Deezer presence, Shazam charts, and various audio features. - Fonte: https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023\n\n\n\nCódigo\n# carregando o conjunto de dados\n# disponivel em: https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023\n\ndados &lt;- \n  readr::read_csv('spotify-2023.csv') %&gt;% \n  janitor::clean_names()\n\ndados %&gt;% head(30)\n\n\n\n\n  \n\n\n\n\n\nCódigo\nbind_rows(\n  dados %&gt;% enoqueR::overall_info(),\n  dados %&gt;% enoqueR::overall_tipos()\n)\n\n\n\n?(caption)\n\n\n\n\n\n  \n\n\n\n\n\nO conjunto de dados apresenta um total de 24 colunas, 955 observações e ausência de linhas duplicadas. Dentre as 24 colunas, 19 são numéricas e 5 são de caractere.\n\n\nCódigo\ndados %&gt;% glimpse()\n\n\nRows: 953\nColumns: 24\n$ track_name               &lt;chr&gt; \"Seven (feat. Latto) (Explicit Ver.)\", \"LALA\"…\n$ artist_s_name            &lt;chr&gt; \"Latto, Jung Kook\", \"Myke Towers\", \"Olivia Ro…\n$ artist_count             &lt;dbl&gt; 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, …\n$ released_year            &lt;dbl&gt; 2023, 2023, 2023, 2019, 2023, 2023, 2023, 202…\n$ released_month           &lt;dbl&gt; 7, 3, 6, 8, 5, 6, 3, 7, 5, 3, 4, 7, 1, 4, 3, …\n$ released_day             &lt;dbl&gt; 14, 23, 30, 23, 18, 1, 16, 7, 15, 17, 17, 7, …\n$ in_spotify_playlists     &lt;dbl&gt; 553, 1474, 1397, 7858, 3133, 2186, 3090, 714,…\n$ in_spotify_charts        &lt;dbl&gt; 147, 48, 113, 100, 50, 91, 50, 43, 83, 44, 40…\n$ streams                  &lt;dbl&gt; 141381703, 133716286, 140003974, 800840817, 3…\n$ in_apple_playlists       &lt;dbl&gt; 43, 48, 94, 116, 84, 67, 34, 25, 60, 49, 41, …\n$ in_apple_charts          &lt;dbl&gt; 263, 126, 207, 207, 133, 213, 222, 89, 210, 1…\n$ in_deezer_playlists      &lt;dbl&gt; 45, 58, 91, 125, 87, 88, 43, 30, 48, 66, 54, …\n$ in_deezer_charts         &lt;dbl&gt; 10, 14, 14, 12, 15, 17, 13, 13, 11, 13, 12, 5…\n$ in_shazam_charts         &lt;dbl&gt; 826, 382, 949, 548, 425, 946, 418, 194, 953, …\n$ bpm                      &lt;dbl&gt; 125, 92, 138, 170, 144, 141, 148, 100, 130, 1…\n$ key                      &lt;chr&gt; \"B\", \"C#\", \"F\", \"A\", \"A\", \"C#\", \"F\", \"F\", \"C#…\n$ mode                     &lt;chr&gt; \"Major\", \"Major\", \"Major\", \"Major\", \"Minor\", …\n$ danceability_percent     &lt;dbl&gt; 80, 71, 51, 55, 65, 92, 67, 67, 85, 81, 57, 7…\n$ valence_percent          &lt;dbl&gt; 89, 61, 32, 58, 23, 66, 83, 26, 22, 56, 56, 5…\n$ energy_percent           &lt;dbl&gt; 83, 74, 53, 72, 80, 58, 76, 71, 62, 48, 72, 8…\n$ acousticness_percent     &lt;dbl&gt; 31, 7, 17, 11, 14, 19, 48, 37, 12, 21, 23, 18…\n$ instrumentalness_percent &lt;dbl&gt; 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ liveness_percent         &lt;dbl&gt; 8, 10, 31, 11, 11, 8, 8, 11, 28, 8, 27, 15, 3…\n$ speechiness_percent      &lt;dbl&gt; 4, 4, 6, 15, 6, 24, 3, 4, 9, 33, 5, 7, 7, 3, …\n\n\n\nstreams aparece como variável character apesar de apresentar observações numéricas e parece representar uma contagem\nUma inspeção nas observações da variável streams revelou uma observação contendo um possivel erro de nessa observação. Tal erro foi subtituido por um valor ausente e então os dados foram importados novamente.\n\n\n\nCódigo\ndados %&gt;% \n  enoqueR::dataset_var_info() %&gt;% \n  as_tibble() %&gt;% \n  arrange(tipo, n_distinct) %&gt;% \n  gt() %&gt;% \n  fmt_number(columns = 6:7)\n\n\n\n\n\n\n  \n    \n      variavel\n      tipo\n      n\n      n_miss\n      n_distinct\n      w\n      p\n    \n  \n  \n    mode\ncharacter\n953\n0\n2\nNA\nNA\n    key\ncharacter\n858\n95\n12\nNA\nNA\n    artist_s_name\ncharacter\n953\n0\n645\nNA\nNA\n    track_name\ncharacter\n953\n0\n943\nNA\nNA\n    artist_count\nnumeric\n953\n0\n8\n0.64\n0.00\n    released_month\nnumeric\n953\n0\n12\n0.93\n0.00\n    released_day\nnumeric\n953\n0\n31\n0.94\n0.00\n    in_deezer_charts\nnumeric\n953\n0\n34\n0.50\n0.00\n    instrumentalness_percent\nnumeric\n953\n0\n39\n0.19\n0.00\n    speechiness_percent\nnumeric\n953\n0\n48\n0.71\n0.00\n    released_year\nnumeric\n953\n0\n50\n0.43\n0.00\n    liveness_percent\nnumeric\n953\n0\n68\n0.77\n0.00\n    danceability_percent\nnumeric\n953\n0\n72\n0.98\n0.00\n    energy_percent\nnumeric\n953\n0\n80\n0.98\n0.00\n    in_spotify_charts\nnumeric\n953\n0\n82\n0.67\n0.00\n    valence_percent\nnumeric\n953\n0\n94\n0.98\n0.00\n    acousticness_percent\nnumeric\n953\n0\n98\n0.87\n0.00\n    bpm\nnumeric\n953\n0\n124\n0.98\n0.00\n    in_apple_charts\nnumeric\n953\n0\n172\n0.88\n0.00\n    in_shazam_charts\nnumeric\n903\n50\n199\n0.41\n0.00\n    in_apple_playlists\nnumeric\n953\n0\n234\n0.72\n0.00\n    in_deezer_playlists\nnumeric\n953\n0\n348\n0.36\n0.00\n    in_spotify_playlists\nnumeric\n953\n0\n879\n0.62\n0.00\n    streams\nnumeric\n952\n1\n949\n0.76\n0.00\n  \n  \n  \n\n\n\n\n\nNenhuma das varíaveis numéricas apresenta distribuição normal.\nDas 145 celulas vazias ?@tbl-overall 95 se encontram na coluna key e e 50 na coluna `in_shazam_charts.\nA variável track_name não é suficiente para servir de nome para as observações (945 != 955).\nAs colunas track_name, artist_s_name e streamsapresentam valores distintos elevados. Deve ser buscar abordar tais colunas como caracteristica de denominação de cada observação.\nAs demais colunas de caractere (keye mode) podem ser consideradas fatores\ncolunas de data podem ser transformadas em uma coluna única\n\n\n\nCódigo\ndados = dados %&gt;% \n  mutate(\n    key = as.factor(key),\n    mode = as.factor(mode),\n    release_date = as_date(paste0(released_year,'-',released_month,'-',released_day))\n  )"
+  },
+  {
+    "objectID": "posts/proj - eda-spotify-2023/index.html#análise-visual-univariada",
+    "href": "posts/proj - eda-spotify-2023/index.html#análise-visual-univariada",
+    "title": "Spotify 2023: Análise das músicas mais populares",
+    "section": "Análise visual univariada",
+    "text": "Análise visual univariada\n\n\nCódigo\ndados %&gt;% \n  select(where(is.numeric)) %&gt;% \n  pivot_longer(everything()) %&gt;% \n    drop_na() %&gt;% \n  ggplot(aes(x = value)) + \n  geom_histogram(color = 'white', fill = 'green4') + \n  facet_wrap(~name, scales = 'free') + \n  theme_test()\n\n\n\n\n\n\n\nCódigo\ndados %&gt;% \n  select(where(is.numeric)) %&gt;% \n  select(starts_with('in_'), contains('percent')) %&gt;% \n  pivot_longer(everything()) %&gt;% \n  mutate(tipo = ifelse(str_detect(name, 'percent'), 'song info', 'app info')) %&gt;% \n  ggplot(aes(x = name, y = value)) +\n  geom_boxplot(color = 'green4')  + \n  theme_test() + \n  facet_wrap(~tipo, scales = 'free', ncol = 1) + \n  coord_flip()\n\n\n\n\n\n\n\nCódigo\n# dados %&gt;% \n#   select(where(is.factor)) %&gt;% \n#   names() %&gt;% \n#   map(.f = function(x){\n#     tibble(\"{{x}}\" := dados %&gt;% pull({{x}})) %&gt;% \n#   })\n\n\n\n\nCódigo\ndados %&gt;% \n  mutate(key = factor(key, levels = c(\"C#\", \"D\",\"D#\",\"E\",\"F\",\"F#\",\"G\",\"G#\",\"A\",\"A#\",\"B\"))) %&gt;% \n  select(where(is.factor)) %&gt;% \n  pivot_longer(everything()) %&gt;% \n  count(name, value) %&gt;% \n  ggplot(aes(x = value, y = n)) + \n  geom_col(color = 'gray50', alpha = 0.5) +\n  facet_wrap(~name, ncol = 2, scales ='free') + \n  theme_test()"
+  },
+  {
+    "objectID": "posts/proj - eda-spotify-2023/index.html#anláise-bidimensional",
+    "href": "posts/proj - eda-spotify-2023/index.html#anláise-bidimensional",
+    "title": "Spotify 2023: Análise das músicas mais populares",
+    "section": "Anláise bidimensional",
+    "text": "Anláise bidimensional\n\n\nCódigo\ndados %&gt;% \n  select(bpm, contains('percent'), starts_with('in')) %&gt;% \n  drop_na() %&gt;% \n  cor(method = 'spearman') %&gt;% \n  reshape2::melt() %&gt;% \n  ggplot(aes(x = Var2, y = Var1, fill = value, label = round(value, 2))) + \n  geom_tile() + \n  theme_minimal() + \n  scale_fill_gradient2(low = 'blue3', mid = 'lightyellow', high = 'red',midpoint = 0) + \n  theme(axis.text.x = element_text(angle = 90)) +\n  labs(fill = 'Spearman') + \n  geom_text(color = 'black')\n\n\n\n\n\n\nAs variáveis relacionadas a contagem de presença das músicas em charts e playlists de diferentes serviços de streaming de música apresentaram correalações positivas que variam ao redor de 0.5 de correlação. in_deezer_playlists & in_spotify_playlists apresentaram a maior correlação positiva (0.84) e acousticness_percent & energy_percent a maior correlação negativa (-0.46)."
+  },
+  {
+    "objectID": "enoque-cv.html",
+    "href": "enoque-cv.html",
+    "title": "ENOQUE DE SOUSA DA ANUCIAÇÃO FILHO",
+    "section": "",
+    "text": "Ganhar experiência profissional\nDesenvolver, a partir da prática e observação, noções de empreendedorismo e de como se portar como profissional competente.\nAuxiliar os profissionais de outras áreas a resolver problemas e alcançar bons resultados."
+  },
+  {
+    "objectID": "enoque-cv.html#inglês",
+    "href": "enoque-cv.html#inglês",
+    "title": "ENOQUE DE SOUSA DA ANUCIAÇÃO FILHO",
+    "section": "Inglês:",
+    "text": "Inglês:\n\nLeitura: Bom\nEscrita: Razoável\nFala: Pouco"
   }
 ]
