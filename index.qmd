@@ -3,7 +3,7 @@ title: "Sobre mim"
 subtitle: "Enoque de S. A. Filho"
 about:
   template: trestles
-  image: imagem_temporaria.png # https://leagueofitems.com/images/champions/tiles/256/57.webp
+  image: profile.jpg # https://leagueofitems.com/images/champions/tiles/256/57.webp
   links:
     - icon: linkedin
       text: LinkedIn
@@ -23,18 +23,17 @@ Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou 
 
 ## Resumo de Habilidades
 
-- Estatística **|** Analise de Dados
-- R (Linguagem de Programação) Avançado
+-   Estatística **\|** Analise de Dados
+-   R (Linguagem de Programação) Avançado
 -   Excel: Intermediário
 -   Pacote Office
 -   Inglês: Intermediário
 
 ## Formação
 
-Graduação em Estatística pela UFPI **|** 2019 - Presente
+Graduação em Estatística pela UFPI **\|** 2019 - Presente
 
 ## Entre em contato
 
 -   <i class="bi bi-whatsapp"></i>: **(86) 99431-1263**
 -   <i class="bi bi-envelope"></i>: **enoquefilhomail\@gmail.com**
-
