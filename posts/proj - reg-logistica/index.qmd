@@ -1,5 +1,7 @@
 ---
 title: "Atividade Regressão Logistica"
+author: Enoque Filho
+date: 2024-07-14
 editor: visual
 fontsize: 12pt
 format: 
@@ -14,9 +16,8 @@ format:
 execute: 
   warning: false
   message: false
-code: hide
 lang: pt-br
-author: Enoque de Sousa da Anuciação Filho
+
 dpi: 300
 fig-width: 12
 fig-align: center
@@ -60,7 +61,7 @@ dados <-
 
 Variável dependente: **`Sobrevivente`**
 
--   **Sobrevivente Não** vs **Sobrevivente Sim**
+Será realizada o ajuste de um modelo de regressão logistica para a variável sobrevivente de modo a avaliar a chance de **Sobrevivente Não** vs **Sobrevivente Sim.**
 
 ## ANÁLISE DESCRITIVA
 
@@ -194,6 +195,8 @@ ggviolin(
 
 ### Ajustes de diferentes modelos
 
+Modelo completo e modelo escolhido pelo método stepwise
+
 ```{r}
 # Modelo com todas as variáveis
   modelo_completo <- glm(
@@ -207,6 +210,8 @@ ggviolin(
 ```
 
 ### Critério para selecionar o melhor modelo.
+
+O método stepwise apontou para o modelo completo.
 
 ```{r}
 list(modelo_completo, modelo_step) %>% 
@@ -325,7 +330,7 @@ Epi::ROC(form=dados$sobrevivente~ dados$sexo + dados$idade +  dados$classe, plot
 ```{r}
 modelo_completo %>% 
   broom::augment(type.predict = "response") %>% 
-  mutate(Predito = factor(ifelse(.fitted > 0.63, "Sim", "Não"), levels = c("Não", "Sim"))) %>%
+  mutate(Predito = factor(ifelse(.fitted <= 0.63, "Sim", "Não"), levels = c("Sim", "Não"))) %>%
   tbl_cross(row = sobrevivente, col = Predito, percent =  "row") %>% 
   bold_labels() %>% 
   as_flex_table()
@@ -340,7 +345,7 @@ modelo_completo %>%
 ```{r}
 modelo_completo %>% 
   augment(type.predict = "response") %>% 
-  mutate(Predito = ifelse(.fitted > 0.63, "Sim", "Não")) %>%
+  mutate(Predito = factor(ifelse(.fitted <= 0.63, "Sim", "Não"), levels = c("Sim", "Não"))) %>%
   tbl_cross(row = sobrevivente, col = Predito, percent =  "col") %>% 
   bold_labels() %>%
   as_flex_table()
