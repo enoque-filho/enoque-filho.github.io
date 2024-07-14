@@ -24,9 +24,11 @@ fig-align: center
 categories: [R, Análise Descritiva, Regressão Logistica, GLM]
 ---
 
+O objetivo desse trabalho foi aplicar o método de regressão logistica em um conjunto de dados contendo uma variável binária (Sobreivente \| Não sobrevivente) e outras variáveis independentes (Sexo, Classe e Idade).
+
+## SETUP
+
 ```{r}
-
-
 # Pacotes ----------------------------------
   library(tidyverse) # manipulação dos dados e ggplot2
   library(ggpubr) # gráficos 
@@ -42,12 +44,14 @@ categories: [R, Análise Descritiva, Regressão Logistica, GLM]
 
 ## IMPORTAÇÃO DOS DADOS
 
+Após a importação dos dados as variáveis qualitativas foram recategorizadas, adicionando seus respectivies níveis.
+
 ```{r}
 dados <-  
   read.csv("dados.csv", sep = '\t') %>% 
   mutate(
     sobrevivente = factor(ifelse(sobrevivente == 0, "Não", "Sim"),
-                          levels = c("Sim","Não")),  # ordem dos níveis
+                          levels = c("Sim", "Não")),  # ordem dos níveis
     sexo = factor(ifelse(sexo == 0, "Feminino",  "Masculino"),
                   levels = c("Feminino","Masculino")), # ordem dos níveis
     classe = factor(
@@ -59,9 +63,7 @@ dados <-
     )
 ```
 
-Variável dependente: **`Sobrevivente`**
-
-Será realizada o ajuste de um modelo de regressão logistica para a variável sobrevivente de modo a avaliar a chance de **Sobrevivente Não** vs **Sobrevivente Sim.**
+A variavel dependente será **`Sobrevivente`** tendo como nível de refererência o **Sim**. Portanto o modelo será ajustado para estimar razão de chances de **Sobrevivência Não / Sobrevivencia Sim**.
 
 ## ANÁLISE DESCRITIVA
 
@@ -248,7 +250,7 @@ tabela_modelo
 
 ```{r}
 anova(modelo_completo, test = "Chisq") %>% 
-  broom::tidy() %>%
+  tidy() %>%
   mutate(p.value = scales::pvalue(p.value)) %>% 
   flextable() %>% 
   bold(part = "header") %>% 
@@ -329,16 +331,19 @@ Epi::ROC(form=dados$sobrevivente~ dados$sexo + dados$idade +  dados$classe, plot
 
 ```{r}
 modelo_completo %>% 
-  broom::augment(type.predict = "response") %>% 
-  mutate(Predito = factor(ifelse(.fitted <= 0.63, "Sim", "Não"), levels = c("Sim", "Não"))) %>%
+  augment(type.predict = "response") %>%
+  mutate(
+    Predito = factor(ifelse(.fitted <= 0.63, "Sim", "Não"), 
+                     levels = c("Sim","Não"))
+    ) %>% 
   tbl_cross(row = sobrevivente, col = Predito, percent =  "row") %>% 
   bold_labels() %>% 
   as_flex_table()
 ```
 
--   Sensibilidade: 80% (Verdadeiro positivo)
+-   Sensibilidade: 76% (Verdadeiro positivo)
 
--   Especificidade: 76% (Verdadeiro negativo)
+-   Especificidade: 80% (Verdadeiro negativo)
 
 #### Poder de previsão
 
@@ -351,15 +356,21 @@ modelo_completo %>%
   as_flex_table()
 ```
 
--   Poder de previsão de não sobrevivente: 70%
+-   Poder de previsão de não sobrevivente: 84%
 
--   Poder de previsão sobrevivente: 84%
+-   Poder de previsão sobrevivente: 70%
 
 ## INTERPRETAÇÃO DOS RESULTADOS
 
 ```{r}
 tabela_modelo
 ```
+
+- Individuos do sexo Masculino possuem uma chance 12 vezes maior de pertencerem ao grupo de não sobrevivente quando comparado com os do sexo Feminino.
+
+- Idade está pouco relacionada a pertença de um ou outro grupo, com uma leve tendencia a estar relacionada com  a pertença ao grupo de não sobrevivente.
+
+- Individuos de classe Média ou Baixa estão mais relacionadas a pertença do grupo de não sobreiventes quando comparadas com a classe Alta. a chance é 3,6 vezes maior nos de classe Média e quase 10 vezes maior nos de classe baixa quando comparados com a Classe Alta.
 
 ## REFERÊNCIAS
 
