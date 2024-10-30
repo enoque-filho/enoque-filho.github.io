@@ -7,31 +7,29 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://twitter.com
+      href: https://www.linkedin.com/in/enoque-filho
     - icon: github
       text: Github
       href: https://github.com/enoque-filho  
 ---
 
-**Este portfólio está em construção!**
-
 ## Quem Sou
 
-Me chamo Enoque Filho, sou graduando do curso de Bacharelado Em Estatística na Universidade Federal do Piauí (UFPI) com espectativas de concluir em 2024.
+Me chamo Enoque Filho, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).
 
-Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional
+Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional.
 
 ## Resumo de Habilidades
 
 -   Estatística **\|** Analise de Dados
 -   R (Linguagem de Programação) Avançado
--   Excel: Intermediário
+-   Excel
 -   Pacote Office
 -   Inglês: Intermediário
 
 ## Formação
 
-Graduação em Estatística pela UFPI **\|** 2019 - Presente
+Bacharelado em Estatística pela UFPI **\|** 2019 - 2024
 
 ## Entre em contato
 
