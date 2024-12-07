@@ -1,0 +1,11 @@
+---
+title: "Modelos de Classificação ~ Notas de Aula 01"
+format: html
+editor: visual
+---
+
+## Introdução
+
+Meu objetivo nesse projeto é estudar e pratica modelos de classificação. Desejo fazer uso da coleção de pacotes do `tidymodels` em todo o projeto.
+
+## 

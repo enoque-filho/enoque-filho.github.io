@@ -2,6 +2,9 @@
   {
     "listing": "/projetos.html",
     "items": [
+      "/posts/proj - eda loan data/analise_exploratoria_loan_data.html",
+      "/posts/proj - eda loan data/notas-de-estudo.html",
+      "/posts/proj - reg_logistica tidymodels/classificacao - reg_log.html",
       "/posts/proj - reg-logistica/index.html",
       "/posts/proj - eda-spotify-2023/index.html"
     ]
