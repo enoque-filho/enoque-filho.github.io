@@ -17,11 +17,9 @@ execute:
   warning: false
   message: false
 lang: pt-br
-
 dpi: 300
 fig-width: 12
 fig-align: center
-categories: [R, Análise Descritiva, Regressão Logistica, GLM]
 ---
 
 O objetivo desse trabalho foi aplicar o método de regressão logistica em um conjunto de dados contendo uma variável binária (Sobreivente \| Não sobrevivente) e outras variáveis independentes (Sexo, Classe e Idade).
@@ -366,11 +364,11 @@ modelo_completo %>%
 tabela_modelo
 ```
 
-- Individuos do sexo Masculino possuem uma chance 12 vezes maior de pertencerem ao grupo de não sobrevivente quando comparado com os do sexo Feminino.
+-   Individuos do sexo Masculino possuem uma chance 12 vezes maior de pertencerem ao grupo de não sobrevivente quando comparado com os do sexo Feminino.
 
-- Idade está pouco relacionada a pertença de um ou outro grupo, com uma leve tendencia a estar relacionada com  a pertença ao grupo de não sobrevivente.
+-   Idade está pouco relacionada a pertença de um ou outro grupo, com uma leve tendencia a estar relacionada com a pertença ao grupo de não sobrevivente.
 
-- Individuos de classe Média ou Baixa estão mais relacionadas a pertença do grupo de não sobreiventes quando comparadas com a classe Alta. a chance é 3,6 vezes maior nos de classe Média e quase 10 vezes maior nos de classe baixa quando comparados com a Classe Alta.
+-   Individuos de classe Média ou Baixa estão mais relacionadas a pertença do grupo de não sobreiventes quando comparadas com a classe Alta. a chance é 3,6 vezes maior nos de classe Média e quase 10 vezes maior nos de classe baixa quando comparados com a Classe Alta.
 
 ## REFERÊNCIAS
 

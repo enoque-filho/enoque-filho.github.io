@@ -1,0 +1,174 @@
+---
+editor: visual
+title: "Inferência Estatística Organizada: no R"
+author: "Enoque Filho"
+format:
+  html:
+    theme: darkly
+    toc: true
+    toc-title: Tópicos
+execute: 
+  warning: false
+  message: false
+lang: pt
+fig-align: center
+---
+
+Esse texto tem como objetivo apresentar o pacote `infer` que tem como objetivo principal a realização de procedimentos de inferência estatística de forma organizada, seguindo a filosofia ***tidy***.
+
+```{r}
+library(tidyverse)
+library(infer)
+library(gt)
+library(flextable)
+theme_set(theme_test())
+```
+
+# infer
+
+:::::: columns
+::: {.column style="width:49%"}
+**Informações do pacote:**
+
+-   **Título:** *Tidy Statistical Inference*
+-   **Autor principal:** *Andrew Bray*
+-   **Citação:** *Couch et al., (2021). infer: An R package for tidyverse-friendly statistical inference. Journal of Open Source Software, 6(65), 3661, https://doi.org/10.21105/joss.03661*
+-   Site: <https://infer.netlify.app>
+:::
+
+::: {.column style="width:2%"}
+:::
+
+::: {.column style="width:49%"}
+![infer logo](https://cran.r-project.org/web/packages/infer/readme/man/figures/logo.png)
+:::
+::::::
+
+![](https://arbor-analytics.com/post/2022-12-14-doing-statistics-in-the-tidyverse-exploring-the-infer-package/inferverbs.png){fig-align="center" width="600"}
+
+![](https://raw.githubusercontent.com/tidymodels/infer/master/figs/ht-diagram.png){fig-align="center" width="600"}
+
+## Conjunto de dados utilizado
+
+as vinhetas do pacote infer utilizam o conjunto de dados `gss` que corresponde a Subconjunto de dados da Pesquisa Social Geral (GSS)., traduzido literalmente do help(gss): *Subset of data from the General Social Survey (GSS).*
+
+> *The General Social Survey is a high-quality survey which gathers data on American society and opinions, conducted since 1972. This data set is a sample of 500 entries from the GSS, spanning years 1973-2018, including demographic markers and some economic variables. Note that this data is included for demonstration only, and should not be assumed to provide accurate estimates relating to the GSS. However, due to the high quality of the GSS, the unweighted data will approximate the weighted data in some analyses.*
+>
+> *O General Social Survey é um inquérito de alta qualidade que reúne dados sobre a sociedade e as opiniões americanas, realizado desde 1972. Este conjunto de dados é uma amostra de 500 entradas do GSS, abrangendo os anos 1973-2018, incluindo marcadores demográficos e algumas variáveis económicas. Note-se que estes dados são incluídos apenas para demonstração e não devem ser considerados como fornecendo estimativas precisas relativas ao GSS. Contudo, devido à elevada qualidade do GSS, os dados não ponderados aproximar-se-ão dos dados ponderados em algumas análises.*
+
+```{r}
+nomes_traduzidos = c(
+  'ano', 'idade', 'sexo', 'faculdade','id_partido','dom_pop',
+  'horas', 'renda', 'classe', 'fam_renda_opn', 'peso'
+  )
+```
+
+```{r}
+glimpse(gss)
+```
+
+```{r}
+gss %>% 
+  select(where(is.numeric)) %>% 
+  pivot_longer(everything()) %>% 
+  ggplot(aes(x = name, y = value, color = name)) + 
+  #geom_jitter(alpha = 0.6) + 
+  geom_violin(aes(), linewidth =0.8, fill ='#ffffffff') + 
+  geom_boxplot(notch = TRUE, outlier.shape= 15, outlier.color = 'black',
+               alpha = 0.5, linewidth =0.8) + 
+  facet_wrap(~name, scales = 'free', nrow =1) + 
+  theme_minimal() + 
+  theme(legend.position ='none')
+```
+
+-   `specify()`
+-   `calculate()`
+-   `observe()`
+-   `hyhotesize()`
+-   `generate()`
+-   
+
+# Testes de Hipótese
+
+## Uma variável numérica (média)
+
+```{r}
+x_barra <- 
+  gss %>% 
+  observe(response = hours, stat = 'mean')
+```
+
+```{r}
+dist_nula <-
+  gss %>%
+  specify(response = hours) %>%
+  hypothesize(null = "point", mu = 40) %>%
+  generate(reps = 1000) %>%
+  calculate(stat = "mean")
+
+
+```
+
+```{r}
+visualize(dist_nula) +
+  shade_p_value(obs_stat = x_barra, direction = 'two-sided')
+  
+```
+
+```{r}
+dist_nula %>% 
+  get_p_value(obs_stat = x_barra, direction = 'two-sided')
+```
+
+## Uma variável numérica (standardized mean t)
+
+```{r}
+ t_barra = gss %>% 
+   specify(response = hours) %>% 
+   hypothesise(null = 'point', mu = 40) %>% 
+   calculate(stat = 't')
+
+ t_barra <- gss %>%
+   observe(response = hours, null = "point", mu = 40, stat = "t")
+ t_barra
+```
+
+Gerar a distribuição nula:
+
+```{r}
+# gerar a distribuição nula
+gss %>% 
+  specify(response = hours) %>% 
+  hypothesise(null = 'point', mu = 40) %>% 
+  generate(reps = 1000) %>% 
+  calculate(stat = 't') %>% 
+  visualize(method = 'both') +
+  shade_p_value(obs_stat = t_barra, direction = 'two-sided')
+```
+
+Alternativamente, encontrar a distribuição nula usando metodos teóricos com o verbo `assume()`:
+
+```{r}
+gss %>% 
+  specify(response = hours) %>% 
+  assume('t') %>% 
+  visualize() + 
+  shade_p_value(obs_stat = t_barra, direction = 'two-sided')
+```
+
+```{r}
+gss %>% 
+  specify(response = hours) %>% 
+  hypothesise(null = 'point', mu = 40) %>% 
+  generate(reps = 1000) %>% 
+  calculate(stat = 't') %>% 
+  get_p_value(obs_stat = t_barra, direction = "two-sided")
+```
+
+```{r}
+gss %>% t_test(response = hours, mu = 40)
+```
+
+# Referências
+
+-   <https://infer.netlify.app/articles/observed_stat_examples>

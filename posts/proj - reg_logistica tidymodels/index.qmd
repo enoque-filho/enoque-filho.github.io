@@ -12,6 +12,7 @@ execute:
 fontsize: 15pt
 fig-width: 12
 fig-height: 5
+categories: [Regressão Logistica, GLM, R, tidymodels]
 ---
 
 $$g: \mathbb{R}^p \to \{-1, 1\}.$$ $$\log \left(\frac{P(Y_i = 1 \mid X = x)}{P(Y_i = 0 \mid X = x)}\right) = \alpha + \beta x_i, \quad i = 1, \dots, n.$$
@@ -28,7 +29,7 @@ Esse é o logaritmo da chance de resposta positiva. É uma função da média pa
 
 das categorias 0 ou 1 passamos para um intervalo granulado quando modelos a chance de 1 em relação a 0 e atráves do log dessa chance obtemos um intervalo entre 0 e 1.
 
----
+------------------------------------------------------------------------
 
 Reprodução do exemplo de modelagem de regressão logistica do Livro Estatística e Ciência de Dados (Morettin e Singer) utilizando o `tidymodels`.
 

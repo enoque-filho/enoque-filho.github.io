@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
-<p><img src="classificacao---reg_log_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="1152"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="1152"></p>
 </div></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(dados_disco <span class="sc">%&gt;%</span> </span>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>(dados_disco <span class="sc">%&gt;%</span> </span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ggpubr<span class="sc">::</span><span class="fu">ggdensity</span>(<span class="at">x =</span> <span class="st">"distanciaA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="classificacao---reg_log_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="1152"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 <p>Há desbalanceamento nas proporções da variáveis resposta. Devemos levar isso em consideração ao escolher qual critério de reamostragem utilizar para separar os dados em treino e teste. Nessas situações podemos fazer uso da amostragem estratificada que realiza a coleta/separação das observações estratificando-as por um alguma variável e retornando amostras com proporções balanceadas para cada grupo da variável de estratificação.</p>
@@ -328,7 +328,7 @@ Residual Deviance: 71.6     AIC: 75.6</code></pre>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> distanciaA <span class="sc">-</span> <span class="fu">min</span>(distanciaA), <span class="at">y =</span> deslocamento)) <span class="sc">+</span> </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="classificacao---reg_log_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="1152"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 <section id="referências" class="level2">

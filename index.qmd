@@ -1,3 +1,5 @@
+------------------------------------------------------------------------
+
 ---
 title: "Sobre mim"
 subtitle: "Enoque de S. A. Filho"
@@ -13,25 +15,31 @@ about:
       href: https://github.com/enoque-filho  
 ---
 
-## Quem Sou
-
-Me chamo Enoque Filho, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).
-
-Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional.
-
-## Resumo de Habilidades
+## Habilidades
 
 -   Estatística **\|** Analise de Dados
--   R (Linguagem de Programação) Avançado
+-   R, Excel, Power BI, Power Query.
 -   Excel
 -   Pacote Office
 -   Inglês: Intermediário
 
 ## Formação
 
-Bacharelado em Estatística pela UFPI **\|** 2019 - 2024
+-   Bacharelado em Estatística pela UFPI **\|** 2019 - 2024
+
+## Experiência Profissional
+
+-   Assistente administrativo \| 2024 - Atualmente
+
+## Quem Sou
+
+Me chamo Enoque Filho, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).
+
+Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional.
 
 ## Entre em contato
 
 -   <i class="bi bi-whatsapp"></i>: **(86) 99431-1263**
 -   <i class="bi bi-envelope"></i>: **enoquefilhomail\@gmail.com**
+
+## 

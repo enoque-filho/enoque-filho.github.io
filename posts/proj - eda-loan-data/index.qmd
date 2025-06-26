@@ -28,7 +28,6 @@ number-sections: true
 fontsize: 12pt
 ---
 
-
 ```{r}
 # Análise exploratória de dados: 
 
@@ -46,7 +45,6 @@ dados = read_csv("datasets/loan_data.csv")
 
 ## Visão geral
 
-
 ```{r}
 bind_rows(
   enoqueR::overall_info(dados),
@@ -56,10 +54,6 @@ bind_rows(
   opt_interactive()
 ```
 
-
-
-
-
 ```{r}
 dados %>% 
   head() %>%
@@ -67,8 +61,6 @@ dados %>%
   fmt_number(where(is.numeric)) %>%
   opt_interactive()
 ```
-
-
 
 ```{r}
 variaveis_pt <- c(
@@ -87,7 +79,6 @@ variaveis_pt <- c(
   "registros_publicos_negativos" = "pub.rec"
 )
 ```
-
 
 ```{r}
 dados <- dados %>% 
@@ -123,13 +114,10 @@ dados %>%
     )
 ```
 
-
 ```{r}
 dados %>% 
     enoqueR::eda_tabela_dataset_resumo_num()
 ```
-
-
 
 ```{r}
 dados %>% 
@@ -142,7 +130,6 @@ dados %>%
   enoqueR::eda_visual_dataset_resposta(resposta = "politica_credito")
 ```
 
-
 ## Próximos passos
 
-- Análisar associação/correlação entre a covariaveis
+-   Análisar associação/correlação entre a covariaveis
