@@ -7,3 +7,5 @@ enoque-cv.qmd
 /docs/enoque-cv.pdf
 **/desktop.ini
 /.quarto/
+
+**/*.quarto_ipynb

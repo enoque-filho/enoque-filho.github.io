@@ -149,7 +149,7 @@ dados %>%
   gtsummary::tbl_cross(
     sexo, sobrevivente, 
     statistic = "{n} ({p}%)",
-    percent = "col"
+    percent = "column"
     ) %>% 
   bold_labels() %>% 
   as_flex_table()
@@ -167,7 +167,7 @@ dados %>%
   gtsummary::tbl_cross(
     classe, sobrevivente, 
     statistic = "{n} ({p}%)",
-    percent = "col"
+    percent = "column"
     ) %>% 
   bold_labels() %>% 
   as_flex_table()
@@ -349,7 +349,7 @@ modelo_completo %>%
 modelo_completo %>% 
   augment(type.predict = "response") %>% 
   mutate(Predito = factor(ifelse(.fitted <= 0.63, "Sim", "Não"), levels = c("Sim", "Não"))) %>%
-  tbl_cross(row = sobrevivente, col = Predito, percent =  "col") %>% 
+  tbl_cross(row = sobrevivente, col = Predito, percent =  "column") %>% 
   bold_labels() %>%
   as_flex_table()
 ```
