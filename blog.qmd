@@ -1,0 +1,12 @@
+---
+title: "Blog sobre Estatística"
+listing:
+    contents: 'blog_posts'
+    sort: 'date desc'
+    categories: true
+    sort-ui: true
+    filter-ui: true
+page-layout: article
+title-block-style: manuscript
+title-block-banner: true
+---

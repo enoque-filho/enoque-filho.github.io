@@ -8,5 +8,12 @@
       "/posts/proj - reg-logistica/index.html",
       "/posts/proj - eda-spotify-2023/index.html"
     ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog_posts/teste - qui quadrado/qui-quadrado.html",
+      "/blog_posts/Teste-t comparando 2 grupos indenpendentes/comparar-2-grupos-independentes.html"
+    ]
   }
 ]

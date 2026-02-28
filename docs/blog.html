@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sobre mim – Enoque Filho</title>
+<title>Blog sobre Estatística – Enoque Filho</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,11 +30,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-aa0bfeffdde32bb1c7607de7a91446fc.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-aa0bfeffdde32bb1c7607de7a91446fc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -71,7 +74,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -240,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -255,7 +316,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> <i class="bi bi-house" role="img">
+    <a class="nav-link" href="./index.html"> <i class="bi bi-house" role="img">
 </i> 
 <span class="menu-text">Sobre mim</span></a>
   </li>  
@@ -265,7 +326,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Projetos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> <i class="bi bi-pen" role="img">
+    <a class="nav-link active" href="./blog.html" aria-current="page"> <i class="bi bi-pen" role="img">
 </i> 
 <span class="menu-text">Blog</span></a>
   </li>  
@@ -290,92 +351,115 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Blog sobre Estatística</h1>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+        
+        <div class="quarto-title-meta">
+
+                
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Nesta pagina</h2>
-  <ul>
-  <li><a href="#habilidades" id="toc-habilidades" class="nav-link active" data-scroll-target="#habilidades">Habilidades</a></li>
-  <li><a href="#formação" id="toc-formação" class="nav-link" data-scroll-target="#formação">Formação</a></li>
-  <li><a href="#experiência-profissional" id="toc-experiência-profissional" class="nav-link" data-scroll-target="#experiência-profissional">Experiência Profissional</a></li>
-  <li><a href="#quem-sou" id="toc-quem-sou" class="nav-link" data-scroll-target="#quem-sou">Quem Sou</a></li>
-  <li><a href="#entre-em-contato" id="toc-entre-em-contato" class="nav-link" data-scroll-target="#entre-em-contato">Entre em contato</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
-  </ul>
-</nav>
-    </div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
-<div class="quarto-about-trestles">
-  <div class="about-entity">
-    <img src="profile.jpg" class="about-image
-  rounded " style="width: 20em;">
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Sobre mim</h1>
-<p class="subtitle lead">Enoque de S. A. Filho</p>
-</div>
-<div class="quarto-title-meta">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+  
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+    </select>
   </div>
-</header>
-    <div class="about-links">
-  <a href="https://www.linkedin.com/in/enoque-filho" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/enoque-filho" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-  </div>
-  <div class="about-contents"><main class="content" id="quarto-document-content">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1772303578679" data-listing-reading-time-sort="3" data-listing-word-count-sort="571">
+<div class="thumbnail"><a href="./blog_posts/teste - qui quadrado/qui-quadrado.html" class="no-external">
 
+<p class="card-img-top"><img src="blog_posts\teste - qui quadrado\qui-quadrado_files\figure-html\unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
 
-<section id="habilidades" class="level2">
-<h2 data-anchor-id="habilidades">Habilidades</h2>
-<ul>
-<li>Estatística <strong>|</strong> Analise de Dados</li>
-<li>R, Excel, Power BI, Power Query.</li>
-<li>Excel</li>
-<li>Pacote Office</li>
-<li>Inglês: Intermediário</li>
-</ul>
-</section>
-<section id="formação" class="level2">
-<h2 data-anchor-id="formação">Formação</h2>
-<ul>
-<li>Bacharelado em Estatística pela UFPI <strong>|</strong> 2019 - 2024</li>
-</ul>
-</section>
-<section id="experiência-profissional" class="level2">
-<h2 data-anchor-id="experiência-profissional">Experiência Profissional</h2>
-<ul>
-<li>Assistente administrativo | 2024 - Atualmente</li>
-<li>Consultoria estatística acadêmica e analise de dados| 2025 - Atualmente</li>
-</ul>
-</section>
-<section id="quem-sou" class="level2">
-<h2 data-anchor-id="quem-sou">Quem Sou</h2>
-<p>Me chamo Enoque, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).</p>
-<p>Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional.</p>
-</section>
-<section id="entre-em-contato" class="level2">
-<h2 data-anchor-id="entre-em-contato">Entre em contato</h2>
-<ul>
-<li><i class="bi bi-whatsapp"></i>: <strong>(86) 99431-1263</strong></li>
-<li><i class="bi bi-envelope"></i>: <strong>enoquefilhomail@gmail.com</strong></li>
-</ul>
-</section>
-<section id="section" class="level2">
-<h2 data-anchor-id="section"></h2>
-
-
-</section>
-</main></div>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog_posts/teste - qui quadrado/qui-quadrado.html" class="no-external">Teste Qui-quadrado</a>
+</h3>
+<div class="delink listing-description"><a href="./blog_posts/teste - qui quadrado/qui-quadrado.html" class="no-external">
+O teste <strong>Qui-quadrado</strong> (<span class="math inline">\(\chi^2\)</span>) é um método da estatística utilizado para responder os seguintes tipos de pergunta.
+</a></div>
 </div>
- <!-- /main -->
+<div class="metadata">
+<a href="./blog_posts/teste - qui quadrado/qui-quadrado.html" class="no-external">
+<div class="listing-author">
+Enoque
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1772303123787" data-listing-reading-time-sort="4" data-listing-word-count-sort="670">
+<div class="thumbnail"><a href="./blog_posts/Teste-t comparando 2 grupos indenpendentes/comparar-2-grupos-independentes.html" class="no-external">
+
+<p class="card-img-top"><img src="blog_posts\Teste-t comparando 2 grupos indenpendentes\comparar-2-grupos-independentes_files\figure-html\unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./blog_posts/Teste-t comparando 2 grupos indenpendentes/comparar-2-grupos-independentes.html" class="no-external">Teste-t: Comparando 2 grupos independentes</a>
+</h3>
+<div class="delink listing-description"><a href="./blog_posts/Teste-t comparando 2 grupos indenpendentes/comparar-2-grupos-independentes.html" class="no-external">
+O <strong>teste-t</strong> é um método da estatística utilizado para responder o seguinte tipo de pergunta:
+</a></div>
+</div>
+<div class="metadata">
+<a href="./blog_posts/Teste-t comparando 2 grupos indenpendentes/comparar-2-grupos-independentes.html" class="no-external">
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -391,6 +475,13 @@ ul.task-list li input[type="checkbox"] {
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

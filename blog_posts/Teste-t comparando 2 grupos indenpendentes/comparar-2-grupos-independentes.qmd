@@ -1,0 +1,117 @@
+---
+title: "Teste-t: Comparando 2 grupos independentes"
+format: 
+  html:
+    theme: cosmo
+    grid:
+      body-width: 800px
+editor: visual
+fontsize: 18pt
+mainfont: Calibri Light
+execute:
+  message: false
+  warning: false
+  echo: false
+---
+
+```{r}
+# Pacotes ----------------------------------------
+  library(tidyverse)
+  library(gtsummary)
+  library(gt)
+  library(ggpubr)
+
+# Setup ------------------------------------------
+ theme_gtsummary_journal("lancet")
+ theme_gtsummary_language(
+   language = "pt", 
+   big.mark = ".", 
+   decimal.mark = ",", 
+   ci.sep = "; "
+   )
+ 
+```
+
+O **teste-t** é um método da estatística utilizado para responder o seguinte tipo de pergunta:
+
+> *"Existe efeito de uma variável categóricas com 2 grupos ou medidas sobre uma variável continua?"*
+
+Quando a variável categórica corresponde a 2 grupos (independentes) chamamos de ***teste-t independente*** e quando ela corresponde a duas medidas de um mesmo grupo, chamamos de ***teste-t pareado***.
+
+Por trás dos panos o teste-t verifica se a ***média*** dos grupos ou medidas são estatísticamente diferentes. Por conta disso é necessário que a distribuição da variável continua seja simétrica pois a média é um estatística que é muito afetada por valores muito grandes ou muito pequenos. Além disso também é necessário que a variancia entre os grupos sejam aproximadamente iguais. Esses dois requisitos podem ser verificados a partir de outros métodos como teste de shapiro-wilk e qqplot para a simetria e o teste de levene para a variância. Quando esses requisitos não são atendidos é necessário adicionar correções ao teste-t (correção de Welch quando as variâncias não são iguais) ou aplicar outros métodos de comparação de grupo como, por exemplo, o teste ***U de Mann-Whitney***, quando a distribuição é muito assimétrica.
+
+Para exemplificar o uso desse método considere um estudo no o objetivo era avaliar o efeito de duas formas de suplementação de vitamina C no crescimento de dentes de porquinhos-da-india. Os pesquisadores realizaram um ensaio clinico com 2 grupos de cobais onde um grupo recebeu suco de laranja e outro ácido ascórbico.
+
+```{r}
+dados <- 
+  ToothGrowth %>%
+  filter(dose == 0.5) %>% 
+  mutate(supp = if_else(supp == "VC", "Ácido ascorbico","Suco de laranja"))
+
+dados <- 
+  enoqueR::sup_rotular(dados, c("Comprimento do dente (mm)", "Tipo de suplementação", "Dose"))
+```
+
+```{r}
+dados %>%
+  #enoqueR::tbl_resumo(digits = 1)
+  ggpubr::ggqqplot(x = "len", facet.by = "supp", title = "QQplot para avaliar a simetria das observações", xlab = "Quantis Teóricos", ylab = "Amostra")
+```
+
+```{r}
+dados %>% 
+  group_by(supp) %>% 
+  rstatix::shapiro_test(vars = "len") %>% 
+  mutate(p = scales::pvalue(p)) %>%
+  gt() %>% 
+  gt::tab_caption(md("**Teste de shapiro-wilk para avaliar a normalidade (simetria) das observações**")) %>% 
+  cols_width(everything() ~ px(600/4))
+
+dados %>% 
+  rstatix::levene_test(len ~ supp) %>% 
+  mutate(p = scales::pvalue(p)) %>%
+  gt() %>% 
+  cols_width(everything() ~ px(600/4)) %>% 
+  tab_caption(md("**Teste de levene para avaliar a homogeneidade (variância apróximadas) das observações**"))
+
+```
+
+### Os Resultados
+
+```{r}
+tabela <- 
+  dados %>% 
+  select(-dose) %>% 
+  tbl_summary(
+    by = supp, 
+    statistic = list(all_continuous()~ "{mean}±{sd}"),
+    digits = everything() ~ 1
+    ) %>% 
+  add_difference() %>%
+  modify_spanning_header(all_stat_cols() ~ "**Sexo**") %>%
+  modify_header(
+    label = "**Variável**", 
+    estimate = "**Diferença**",
+    statistic = "**t**"
+  ) %>% 
+  modify_footnote(all_stat_cols() ~ "Média ± DP")
+
+tabela
+```
+
+Este resultado pode ser interpretado da seguinte maneira:
+
+**Os resultados indicam que o comprimento médio do dente foi significativamente maior nas cobaias que receberam suco de laranja (13,2 ± 4,5 mm) em comparação com aquelas que receberam ácido ascórbico (8,0 ± 2,7 mm). A diferença média entre os grupos foi de -5,3 mm, com um intervalo de confiança de 95% de -8,8 a -1,7 mm. Esse resultado foi estatisticamente significativo (t = -3,17, p = 0,006), conforme o teste t com correção de Welch, sugerindo que o tipo de suplemento influencia o comprimento do dente.**
+
+```{r}
+dados %>% 
+  filter(dose == 0.5) %>% 
+  ggpubr::ggerrorplot(x = "supp", y = "len", add = "jitter", palette = get_palette(c("darkblue","orange"), 2), color = "supp", legend = "none") + 
+  labs(
+    x = "Tipo de suplemento",
+    y = "Comprimento do dente",
+    title = "Efeito do Tipo de Suplemento no Comprimento do Dente (mm)"
+      ) + 
+  stat_compare_means(formula = len ~ supp, data = dados, method = "t.test")
+
+```

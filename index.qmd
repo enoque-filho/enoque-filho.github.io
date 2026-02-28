@@ -28,10 +28,11 @@ about:
 ## Experiência Profissional
 
 -   Assistente administrativo \| 2024 - Atualmente
+-   Consultoria estatística acadêmica e analise de dados \| 2025 - Atualmente
 
 ## Quem Sou
 
-Me chamo Enoque Filho, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).
+Me chamo Enoque, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).
 
 Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional.
 
@@ -40,4 +41,4 @@ Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou 
 -   <i class="bi bi-whatsapp"></i>: **(86) 99431-1263**
 -   <i class="bi bi-envelope"></i>: **enoquefilhomail\@gmail.com**
 
-## 
+##

@@ -14,6 +14,9 @@ website:
         text: Sobre mim
       - icon: bar-chart-line
         href: projetos.qmd
+      - icon: pen
+        href: blog.qmd
+        text: Blog
     right:
       - icon: github
         href: "https://github.com/enoque-filho"
@@ -24,8 +27,8 @@ website:
   page-footer:
     background: primary
     center: 
-      - text: |
-          Criado com Posit [Quarto](https://quarto.org/)
+      - text: | # how to make markdown links works here?
+           Criado com Posit <a href="https://quarto.org/">Quarto</a>
 
 format: 
   html:
@@ -37,7 +40,7 @@ format:
     toc: true
     toc-title: 'Nesta pagina'
     author:
-      - name: "Enoque Filho"
+      - name: "Enoque S. Anunciação Filho"
       - email: "enoquefilhomail@gmail.com"
 
 

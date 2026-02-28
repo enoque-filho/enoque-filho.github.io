@@ -1,0 +1,115 @@
+---
+title: "Teste Qui-quadrado"
+author: "Enoque"
+format: 
+  html:
+    theme: cosmo
+    grid:
+      body-width: 800px
+editor: visual
+fontsize: 18pt
+mainfont: Calibri Light
+execute:
+  message: false
+  warning: false
+  echo: false
+---
+
+```{r}
+# Pacotes ----------------------------------------
+  library(tidyverse)
+  library(gtsummary)
+  library(gt)
+  library(ggpubr)
+
+# Setup ------------------------------------------
+ theme_gtsummary_journal("lancet")
+ theme_gtsummary_language(
+   language = "pt", 
+   big.mark = ".", 
+   decimal.mark = ",", 
+   ci.sep = "; "
+   )
+```
+
+O teste **Qui-quadrado** ($\chi^2$) é um método da estatística utilizado para responder os seguintes tipos de pergunta.
+
+> ***Existe Associação entre 2 variáveis categóricas?***
+
+> ***As frequências observadas em 1 variável categórica são iguais as frequências teóricas esperadas?***
+
+Variaveis categóricas são aquelas que representam qualidades, categorias, grupos ou classificações, podendo ou não ter uma ordem. Alguns exemplos: gênero (Homem, Mulher, ...), grau de instrução (Fundamental, Médio, Superior,...), presença de doença (Sim, Não).
+
+O teste trabalha comparando as **frequências observadas**, que são os dados reais coletados, com as **frequências esperadas**, que são as frequências estimadas sob a hipótese nula.
+
+O teste calcula uma medida do quão distante as frequências observadas estão das frequências esperadas. Essa diferença é traduzida em um valor de $\chi^2$, que indica o desvio entre os dados e o esperado.
+
+Se a diferença entre as frequências observadas e esperadas for muito grande, isso pode significar que existe associação entre as variáveis (no caso da análise de associação) ou que as proporções observadas das categorias não seguem as proporções esperadas (no caso do teste de aderência).
+
+Para ilustrar esse método, suponha um estudo de ensaio clinico aleatorizado realizado para avaliar um novo medicamento.
+
+```{r}
+dados <-  tribble(
+  ~Medicamento, ~Sim, ~Não,
+  "Novo", 40, 20,
+  "Placebo", 16,48
+) %>% 
+  pivot_longer(-1, names_to = "Melhora") %>% 
+  mutate(Melhora = fct(Melhora, levels = c("Sim", "Não"))) %>% 
+  uncount(value)
+```
+
+```{r}
+dados %>% 
+  mutate(Medicamento, Melhora) %>%
+  count(Medicamento , Melhora) %>% 
+  group_by(Medicamento) %>%
+  mutate(pct = n / sum(n)) %>% { 
+    ggbarplot(
+    data = .,
+    x = "Medicamento", 
+    y = "n", 
+    fill = "Melhora", 
+    position = position_dodge(width = 0.75),
+    ylab = "Frequência",
+    label = c(round(.$pct,2))) +
+    scale_fill_manual(values = c("lightgreen","gray40"))
+  }
+```
+
+```{r}
+dados %>% 
+  tbl_cross(Medicamento, Melhora) %>% 
+  modify_caption("**Resposta ao medicamento**")
+```
+
+Dependendo do tipo de experimento ou investigação que está sendo realizado, a formulação estatística das hipóteses pode variar mas no geral a aplicação do teste qui-quadrado é a mesma para todos os estudos envolvendo duas variáveis categóricas.
+
+Para esse exemplo em especifico podemos estabelecer as seguintes hipóteses
+
+-   $H_0$: Prob(Melhora no grupo do medicamento NOVO) $=$ Prob(melhora no grupo que tomou o PLACEBO)
+
+-   $H_1$: Prob(Melhora no grupo do medicamento NOVO) $\neq$ Prob(melhora no grupo que tomou o PLACEBO)
+
+'
+
+```{r}
+teste_chi = rstatix::chisq_test(dados$Medicamento, dados$Melhora, correct = FALSE)
+```
+
+```{r}
+teste_chi %>% gt::gt()
+```
+
+```{r}
+teste_chi %>% 
+  rstatix::chisq_descriptives() %>% 
+  mutate(chi = ((observed - expected)^2)/expected,
+         chi_pdr = scale(chi)) %>% 
+  gt::gt() %>% 
+  gt::fmt_number(columns = -c(1,2))
+```
+
+**A partir do resultado do teste Qui-quadrado de independência podemos rejeitar a hipótese nula de que que não há associação entre melhora e tipo de medicamento (** $Q_p=21,7;p<0,0001$ **), o que nos permite afirmar que, para este ensaio, a *incidencia* de melhora positiva foi maior no grupo que tomou o novo medicamento em comparação com o grupo controle que tomou o placebo.**
+
+O teste qui-quadrado apenas testa se existe associação, mas não é capaz de indicar como é essa associação. Para isso é necessário calcular uma ***Medida de Associação**,* tema que será melhor explorado em outro momento.
