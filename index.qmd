@@ -8,37 +8,37 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/enoque-filho
-    - icon: github
-      text: Github
-      href: https://github.com/enoque-filho  
+    - icon: GitHub
+      text: GitHub
+      href: https://GitHub.com/enoque-filho  
 ---
 
 ## Habilidades
 
--   Estatística **\|** Analise de Dados
--   R, Excel, Power BI, Power Query.
--   Excel
--   Pacote Office
--   Inglês: Intermediário
+- Estatística **\|** Analise de Dados
+- R, Excel, Power BI, Power Query.
+- Excel
+- Pacote Office
+- Inglês: Intermediário
 
 ## Formação
 
--   Bacharelado em Estatística pela UFPI **\|** 2019 - 2024
+- Bacharelado em Estatística pela UFPI **\|** 2019 - 2024
 
 ## Experiência Profissional
 
--   Assistente administrativo \| 2024 - Atualmente
--   Consultoria estatística acadêmica e analise de dados \| 2025 - Atualmente
+- Assistente administrativo \| 2024 - Atualmente
+- Consultoria estatística acadêmica e analise de dados \| 2025 - Atualmente
 
 ## Quem Sou
 
 Me chamo Enoque, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).
 
-Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional.
+Tenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experiência profissional.
 
 ## Entre em contato
 
--   <i class="bi bi-whatsapp"></i>: **(86) 99431-1263**
--   <i class="bi bi-envelope"></i>: **enoquefilhomail\@gmail.com**
+- <i class="bi bi-WhatsApp"></i>: **(86) 99431-1263**
+- <i class="bi bi-envelope"></i>: **enoquefilhomail\@gmail.com**
 
 ##

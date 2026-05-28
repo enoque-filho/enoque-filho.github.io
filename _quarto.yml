@@ -17,6 +17,9 @@ website:
       - icon: pen
         href: blog.qmd
         text: Blog
+      - icon: bar-chart-line
+        href: consultoria.qmd
+        text: Consultoria
     right:
       - icon: github
         href: "https://github.com/enoque-filho"

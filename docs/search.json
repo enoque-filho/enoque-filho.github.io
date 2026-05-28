@@ -60,7 +60,7 @@
     "href": "index.html#quem-sou",
     "title": "Sobre mim",
     "section": "Quem Sou",
-    "text": "Quem Sou\nMe chamo Enoque, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).\nTenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experência profissional."
+    "text": "Quem Sou\nMe chamo Enoque, sou formado em Em Estatística pela Universidade Federal do Piauí (UFPI).\nTenho interesse por Estatística, Ciência, Análise e Ciência de Dados. Estou a procura de experiência profissional."
   },
   {
     "objectID": "index.html#formação",
@@ -298,7 +298,7 @@
     "href": "index.html#experiência-profissional",
     "title": "Sobre mim",
     "section": "Experiência Profissional",
-    "text": "Experiência Profissional\n\nAssistente administrativo | 2024 - Atualmente\nConsultoria estatística acadêmica e analise de dados| 2025 - Atualmente"
+    "text": "Experiência Profissional\n\nAssistente administrativo | 2024 - Atualmente\nConsultoria estatística acadêmica e analise de dados | 2025 - Atualmente"
   },
   {
     "objectID": "posts/proj - eda-loan-data/index.html",
@@ -348,5 +348,124 @@
     "title": "Teste Qui-quadrado",
     "section": "",
     "text": "O teste Qui-quadrado (\\(\\chi^2\\)) é um método da estatística utilizado para responder os seguintes tipos de pergunta.\n\nExiste Associação entre 2 variáveis categóricas?\n\n\nAs frequências observadas em 1 variável categórica são iguais as frequências teóricas esperadas?\n\nVariaveis categóricas são aquelas que representam qualidades, categorias, grupos ou classificações, podendo ou não ter uma ordem. Alguns exemplos: gênero (Homem, Mulher, …), grau de instrução (Fundamental, Médio, Superior,…), presença de doença (Sim, Não).\nO teste trabalha comparando as frequências observadas, que são os dados reais coletados, com as frequências esperadas, que são as frequências estimadas sob a hipótese nula.\nO teste calcula uma medida do quão distante as frequências observadas estão das frequências esperadas. Essa diferença é traduzida em um valor de \\(\\chi^2\\), que indica o desvio entre os dados e o esperado.\nSe a diferença entre as frequências observadas e esperadas for muito grande, isso pode significar que existe associação entre as variáveis (no caso da análise de associação) ou que as proporções observadas das categorias não seguem as proporções esperadas (no caso do teste de aderência).\nPara ilustrar esse método, suponha um estudo de ensaio clinico aleatorizado realizado para avaliar um novo medicamento.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nResposta ao medicamento\n\n\n\n\n\n\n\n\n\n\nMelhora\n\nTotal\n\n\nSim\nNão\n\n\n\n\nMedicamento\n\n\n\n\n\n\n\n\n    Novo\n40\n20\n60\n\n\n    Placebo\n16\n48\n64\n\n\nTotal\n56\n68\n124\n\n\n\n\n\n\n\nDependendo do tipo de experimento ou investigação que está sendo realizado, a formulação estatística das hipóteses pode variar mas no geral a aplicação do teste qui-quadrado é a mesma para todos os estudos envolvendo duas variáveis categóricas.\nPara esse exemplo em especifico podemos estabelecer as seguintes hipóteses\n\n\\(H_0\\): Prob(Melhora no grupo do medicamento NOVO) \\(=\\) Prob(melhora no grupo que tomou o PLACEBO)\n\\(H_1\\): Prob(Melhora no grupo do medicamento NOVO) \\(\\neq\\) Prob(melhora no grupo que tomou o PLACEBO)\n\n’\n\n\n\n\n\n\n\n\nn\nstatistic\np\ndf\nmethod\np.signif\n\n\n\n\n124\n21.70868\n3.17e-06\n1\nChi-square test\n****\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx\ny\nobserved\nprop\nrow.prop\ncol.prop\nexpected\nresid\nstd.resid\nchi\nchi_pdr\n\n\n\n\nNovo\nSim\n40.00\n0.32\n0.67\n0.71\n27.10\n2.48\n4.66\n6.14\n1.12\n\n\nPlacebo\nSim\n16.00\n0.13\n0.25\n0.29\n28.90\n−2.40\n−4.66\n5.76\n0.52\n\n\nNovo\nNão\n20.00\n0.16\n0.33\n0.29\n32.90\n−2.25\n−4.66\n5.06\n−0.57\n\n\nPlacebo\nNão\n48.00\n0.39\n0.75\n0.71\n35.10\n2.18\n4.66\n4.74\n−1.07\n\n\n\n\n\n\n\nA partir do resultado do teste Qui-quadrado de independência podemos rejeitar a hipótese nula de que que não há associação entre melhora e tipo de medicamento ( \\(Q_p=21,7;p&lt;0,0001\\) ), o que nos permite afirmar que, para este ensaio, a incidencia de melhora positiva foi maior no grupo que tomou o novo medicamento em comparação com o grupo controle que tomou o placebo.\nO teste qui-quadrado apenas testa se existe associação, mas não é capaz de indicar como é essa associação. Para isso é necessário calcular uma Medida de Associação, tema que será melhor explorado em outro momento."
+  },
+  {
+    "objectID": "teste-consultoria.html",
+    "href": "teste-consultoria.html",
+    "title": "Teste - Consultoria Estatística",
+    "section": "",
+    "text": "O custo depende da complexidade da análise de dados."
+  },
+  {
+    "objectID": "teste-consultoria.html#servicos",
+    "href": "teste-consultoria.html#servicos",
+    "title": "Teste - Consultoria Estatistica",
+    "section": "Como posso ajudar",
+    "text": "Como posso ajudar\n\n\nPlanejamento estatistico de projetos\nDefinicao de objetivo, variaveis, estrategia de analise e estrutura do banco antes da coleta ou qualificacao.\n\n\nAnalise de dados e modelagem\nLimpeza, exploracao, testes, modelos preditivos e apoio na interpretacao dos achados para cada pergunta de pesquisa.\n\n\nRevisao estatistica de artigos\nLeitura critica do metodo, coerencia entre objetivo e tecnica, e ajuste da narrativa dos resultados antes da submissao.\n\n\nRelatorios reprodutiveis em R e Quarto\nEntregas organizadas, com codigo comentado, tabelas e graficos prontos para apresentacao ou manuscrito.\n\n\nTreinamentos aplicados\nMentorias e treinamentos em R, Quarto e fluxo de analise para quem quer ganhar autonomia sem perder rigor.\n\n\nApoio para apresentacao de resultados\nEscolha dos graficos, sintese dos pontos centrais e traducao do resultado tecnico para linguagem academica mais clara."
+  },
+  {
+    "objectID": "teste-consultoria.html#credibilidade-tecnica",
+    "href": "teste-consultoria.html#credibilidade-tecnica",
+    "title": "Teste - Consultoria Estatistica",
+    "section": "Credibilidade tecnica",
+    "text": "Credibilidade tecnica\nSou bacharel em Estatistica pela UFPI e concentro meu trabalho em consultoria academica, analise de dados e comunicacao de resultados com reproducibilidade.\nMeu foco aqui e reduzir retrabalho: organizar a estrategia, escolher tecnicas compatveis com o problema e entregar um fluxo que voce consiga explicar e reaproveitar.\n\n\nFormacao em Estatistica com foco academico\nUso de R, Quarto e boas praticas de reproducibilidade\nAtencao tanto ao metodo quanto a comunicacao final"
+  },
+  {
+    "objectID": "teste-consultoria.html#portfolio",
+    "href": "teste-consultoria.html#portfolio",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Exemplos de trabalho",
+    "text": "Exemplos de trabalho"
+  },
+  {
+    "objectID": "teste-consultoria.html#conversa-inicial-para-entender-seu-projeto",
+    "href": "teste-consultoria.html#conversa-inicial-para-entender-seu-projeto",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Conversa inicial para entender seu projeto",
+    "text": "Conversa inicial para entender seu projeto\nSe você ja tem base de dados, objetivos ou uma versão preliminar do trabalho, eu consigo ajudar a organizar o proximo passo com mais clareza.\nEntrar em contato"
+  },
+  {
+    "objectID": "teste-consultoria.html#serviços",
+    "href": "teste-consultoria.html#serviços",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Serviços",
+    "text": "Serviços\n\nAnálise de dados\nA partir do seu banco de dados e da sua pergunta de pesquisa, irei definir quais métodos e análises estatísticas serão realizadas. Ao final você recebe um relatório completo e detalhado do que foi realizado e nos reunimos em uma chamada de video para eu te apresentar os resultados e tirar quaisquer dúvidas.\n\n\n\n\n\n\nNoteMais informações\n\n\n\n\n\n\nPara quem é esse serviço?\nÉ um serviço voltado para Estudantes de graduação, mestrado ou doutorado que precisam de apoio para seu TCC, defesa ou artigo.\n\nPrimeiro preciso entender o que você precisa, em que parte da pesquisa você se encontra, quais são suas dúvidas etc. Para isso a primeira etapa é:\n\nme enviar o seu banco de dados e qualquer material relevante.\nDescrever sua pergunta de pesquisa e em que etapa você está.\nPara isso você responde este formulário abaixo.\nEm seguida marcamos uma reunião (Via Google Meet) para alinharmos tudo.\nTe mando um orçamento.\nCom orçamento aprovado eu inicio as análises, entregando no prazo de 15 dias um relatório completo com a metodologia detalhada.\nPor fim fazemos mais uma reunião para você tirar todas as dúvidas restantes.\n\n\nA primeira reunião e o orçamento são totalmente gratuitos e visam entender suas necessidades para oferecer o melhor serviço.\n\nVocê me envia seu banco de dados e seu problema de pesquisa.\nEu defino as análises adequadas e faço as análises.\nVocê recebe de volta um relatório completo e detalhado de todas as análises realizadas.\nFazemos uma reunião online para te explicar tudo.\n\n\n\n\n\n\n\nPedir um orçamento Conversar no WhatsApp"
+  },
+  {
+    "objectID": "teste-consultoria.html#credibilidade-técnica",
+    "href": "teste-consultoria.html#credibilidade-técnica",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Credibilidade técnica",
+    "text": "Credibilidade técnica\nSou bacharel em Estatística pela UFPI e concentro meu trabalho em consultoria acadêmica, analise de dados e comunicação de resultados com reprodutibilidade.\nMeu foco aqui e reduzir retrabalho: organizar a estrategia, escolher técnicas compatíveis com o problema e entregar um fluxo que voce consiga explicar e reaproveitar.\n\n\nFormação em Estatística com foco acadêmico\nUso de R, Quarto e boas praticas de reprodutibilidade\nAtenção tanto ao método quanto a comunicação final"
+  },
+  {
+    "objectID": "teste-consultoria.html#quem-fará-as-análises",
+    "href": "teste-consultoria.html#quem-fará-as-análises",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Quem fará as análises",
+    "text": "Quem fará as análises\nMe chamo Enoque, sou bacharel em Estatística pela UFPI e concentro meu trabalho em consultoria científica, análise de dados, comunicação de resultados com reprodutibilidade e construção de conhecimentos baseados em método."
+  },
+  {
+    "objectID": "teste-consultoria.html#estatístico-responsável",
+    "href": "teste-consultoria.html#estatístico-responsável",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Estatístico responsável",
+    "text": "Estatístico responsável"
+  },
+  {
+    "objectID": "teste-consultoria.html#análise-de-dados",
+    "href": "teste-consultoria.html#análise-de-dados",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Análise de dados",
+    "text": "Análise de dados\nA partir do seu banco de dados e da sua pergunta de pesquisa, irei definir quais métodos e análises estatísticas serão realizadas. Ao final você recebe um relatório completo e detalhado do que foi realizado e nos reunimos em uma chamada de video para eu te apresentar os resultados e tirar quaisquer dúvidas.\n\n\n\n\n\n\nNoteMais informações\n\n\n\n\n\n\n\nComo funciona o serviço?\n\n\nQuanto custa esse serviço?\n\n\nPrazo de entrega:\n\nO prazo de entrega depende da complexidade das análises, mas normalmente ocorre dentro de 15 dias.\n\n\n\nPrimeiro preciso entender o que você precisa, em que parte da pesquisa você se encontra, quais são suas dúvidas etc. Para isso as primeiras etapas são:\nVocê me envia seu banco de dados.\nMarcamos uma reunião online (via Google Meet) para você possa explicar suas dúvidas e objetivos do estudo.\nTe mando um orçamento.\nCom orçamento aprovado eu inicio as análises, entregando no prazo médio de 15 dias um relatório completo com a metodologia detalhada.\nPor fim fazemos mais uma reunião para que você possa tirar todas as suas dúvidas.\n\n\nA primeira reunião e o orçamento são totalmente gratuitos e visam entender suas necessidades para oferecer o melhor serviço.\nO relatório incluí textos, tabelas, gráficos, metodologia detalhada e interpretações dos resultados obtidos."
+  },
+  {
+    "objectID": "teste-consultoria.html#consultoria-e-análise-de-dados",
+    "href": "teste-consultoria.html#consultoria-e-análise-de-dados",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Consultoria e Análise de dados",
+    "text": "Consultoria e Análise de dados\nSe você está tem dúvidas e está inseguro quanto a definição ou execução da metodologia estatística adequadada para sua pesquisa, eu posso te ajudar.\nA partir dos seus dados e da sua pergunta de pesquisa, irei definir e executar o métodos de análise estatística mais adequados e, ao final, você receberá um relatório completo e detalhado (com textos, tabelas, gráficos e comentários) de tudo que for realizado e uma reunião de fechamento para que você possa tirar quaisquer dúvidas.\n\n\n\n\n\n\nNoteMais informações\n\n\n\n\n\n\n\nPrimeiro preciso entender o que você precisa, em que parte da pesquisa você se encontra, quais são suas dúvidas etc. Para isso as primeiras etapas são:\n\nVocê me envia seu banco de dados.\nMarcamos uma reunião online (via Google Meet) para você possa explicar suas dúvidas e objetivos do estudo.\nTe mando um orçamento.\n\nCom orçamento aprovado eu inicio as análises, entregando no prazo médio de 15 dias um relatório completo com a metodologia detalhada.\nPor fim realizamos mais uma reunião para que você possa tirar todas as suas dúvidas.\n\n\nA reunião inicial e o orçamento são gratuitos.\nO relatório incluí descrição da metodologia utilizada, justificativa das análises aplicadas e interpretação dos resultados obtidos."
+  },
+  {
+    "objectID": "teste-consultoria.html#consultoria-estatística-e-análise-de-dados",
+    "href": "teste-consultoria.html#consultoria-estatística-e-análise-de-dados",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Consultoria Estatística e Análise de Dados",
+    "text": "Consultoria Estatística e Análise de Dados\nSe você tem dúvidas sobre a definição da abordagem metodológica ou sobre quais análises estatísticas são mais adequadas para sua pesquisa, eu posso te ajudar.\nA partir dos seus dados, objetivos e pergunta de pesquisa, irei definir e executar as análises estatísticas mais adequadas para o estudo. Ao final, você receberá um relatório técnico detalhado, contendo metodologia, interpretações, tabelas, gráficos e comentários sobre os resultados obtidos, além de uma reunião de fechamento para esclarecimento de dúvidas.\n\n\n\n\n\n\nNoteComo funciona\n\n\n\n\n\n\n\nVocê envia o banco de dados e as informações básicas da pesquisa.\nRealizamos uma reunião online para entender o estudo, os objetivos e as dúvidas relacionadas às análises.\nApós a reunião, é definido o escopo da consultoria e enviado o orçamento.\nCom a aprovação, são realizadas as análises estatísticas e elaborado um relatório técnico detalhado.\nO relatório inclui metodologia, justificativa das análises, interpretação dos resultados, tabelas e gráficos.\nAo final, é realizada uma reunião de fechamento para apresentação dos resultados e esclarecimento de dúvidas.\n\n\nA reunião inicial e o orçamento são gratuitos.\nO relatório incluí descrição da metodologia utilizada, justificativa das análises aplicadas e interpretação dos resultados obtidos."
+  },
+  {
+    "objectID": "teste-consultoria.html#consultoria-estatística-e-análise-de-dados-1",
+    "href": "teste-consultoria.html#consultoria-estatística-e-análise-de-dados-1",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Consultoria Estatística e Análise de Dados",
+    "text": "Consultoria Estatística e Análise de Dados\nSe você precisa decidir quais análises usar, organizar os resultados ou apresentar evidências estatísticas com clareza, a consultoria transforma seus dados em um caminho metodológico defensável para TCC, dissertação, tese ou artigo científico.\n\n\nDefinição das análises\nEscolha dos testes, modelos ou procedimentos estatísticos mais adequados aos objetivos, variáveis e desenho do estudo.\n\n\nExecução estatística\nTratamento do banco, aplicação das análises e produção de tabelas, gráficos e resultados organizados.\n\n\nRelatório técnico\nDocumento com metodologia, justificativa das análises, interpretação dos resultados e comentários para apoiar a escrita acadêmica.\n\n\nReunião de fechamento\nApresentação dos resultados e espaço para esclarecer dúvidas sobre as análises realizadas.\n\n\n\n\n\n\n\n\nNoteComo funciona\n\n\n\n\n\n\n\nVocê envia o banco de dados e as informações básicas da pesquisa.\nRealizamos uma reunião online para entender o estudo, os objetivos e as dúvidas relacionadas às análises.\nApós a reunião, é definido o escopo da consultoria e enviado o orçamento. A reunião inicial e o orçamento são gratuitos.\nCom a aprovação, são realizadas as análises estatísticas e elaborado um relatório técnico detalhado.\nO relatório inclui metodologia, justificativa das análises, interpretação dos resultados, tabelas e gráficos.\nAo final, é realizada uma reunião de fechamento para apresentação dos resultados e esclarecimento de dúvidas.\n\nA reunião inicial e o orçamento são gratuitos."
+  },
+  {
+    "objectID": "teste-consultoria.html#vamos-olhar-para-os-seus-dados",
+    "href": "teste-consultoria.html#vamos-olhar-para-os-seus-dados",
+    "title": "Teste - Consultoria Estatística",
+    "section": "Vamos olhar para os seus dados?",
+    "text": "Vamos olhar para os seus dados?\nEnvie sua dúvida, seu banco de dados ou uma descrição breve da pesquisa para receber uma orientação inicial e um orçamento sem custo.\n\nPedir um orçamento Conversar no WhatsApp"
+  },
+  {
+    "objectID": "consultoria.html#consultoria-estatística-e-análise-de-dados",
+    "href": "consultoria.html#consultoria-estatística-e-análise-de-dados",
+    "title": "Consultoria Estatística",
+    "section": "Consultoria Estatística e Análise de Dados",
+    "text": "Consultoria Estatística e Análise de Dados\nSe você tem dúvidas sobre a definição da abordagem metodológica ou sobre quais análises estatísticas são mais adequadas para sua pesquisa, eu posso te ajudar.\nA partir dos seus dados, objetivos e pergunta de pesquisa, irei definir e executar as análises estatísticas mais adequadas para o estudo. Ao final, você receberá um relatório técnico detalhado, contendo metodologia, interpretações, tabelas, gráficos e comentários sobre os resultados obtidos, além de uma reunião de fechamento para esclarecimento de dúvidas.\n\n\n\n\n\n\nNoteComo funciona\n\n\n\n\n\n\n\nVocê envia o banco de dados e as informações básicas da pesquisa.\nRealizamos uma reunião online para entender o estudo, os objetivos e as dúvidas relacionadas às análises.\nApós a reunião, é definido o escopo da consultoria e enviado o orçamento.\nCom a aprovação, são realizadas as análises estatísticas e elaborado um relatório técnico detalhado.\nO relatório inclui metodologia, justificativa das análises, interpretação dos resultados, tabelas e gráficos.\nAo final, é realizada uma reunião de fechamento para apresentação dos resultados e esclarecimento de dúvidas.\n\n\nA reunião inicial e o orçamento são gratuitos.\nO relatório incluí descrição da metodologia utilizada, justificativa das análises aplicadas e interpretação dos resultados obtidos."
+  },
+  {
+    "objectID": "consultoria.html#estatístico-responsável",
+    "href": "consultoria.html#estatístico-responsável",
+    "title": "Consultoria Estatística",
+    "section": "Estatístico responsável",
+    "text": "Estatístico responsável"
+  },
+  {
+    "objectID": "consultoria.html#quem-fará-as-análises",
+    "href": "consultoria.html#quem-fará-as-análises",
+    "title": "Consultoria Estatística",
+    "section": "Quem fará as análises",
+    "text": "Quem fará as análises\nMe chamo Enoque, sou bacharel em Estatística pela UFPI e concentro meu trabalho em consultoria científica, análise de dados, comunicação de resultados com reprodutibilidade e construção de conhecimentos baseados em método."
   }
 ]

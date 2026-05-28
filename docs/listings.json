@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/teste-consultoria.html",
+    "items": []
+  },
+  {
     "listing": "/projetos.html",
     "items": [
       "/posts/proj - eda-loan-data/index.html",
@@ -14,6 +18,16 @@
     "items": [
       "/blog_posts/teste - qui quadrado/qui-quadrado.html",
       "/blog_posts/Teste-t comparando 2 grupos indenpendentes/comparar-2-grupos-independentes.html"
+    ]
+  },
+  {
+    "listing": "/consultoria.html",
+    "items": [
+      "/posts/proj - eda-loan-data/index.html",
+      "/posts/proj - reg-logistica/index.html",
+      "/posts/proj - reg_logistica tidymodels/index.html",
+      "/posts/proj - infer/index.html",
+      "/posts/proj - eda-spotify-2023/index.html"
     ]
   }
 ]

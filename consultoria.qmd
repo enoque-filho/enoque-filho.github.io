@@ -1,0 +1,79 @@
+::: {#post-exemplos}
+---
+title: "Consultoria Estatística"
+format:
+  html:
+    toc: false
+    page-layout: full
+    css: consultoria.css
+---
+:::
+
+:::::::: hero-band
+::::::: hero-grid
+::::: hero-copy
+::: eyebrow
+**Consultoria estatística acadêmica**
+:::
+
+# Consultoria Estatística para TCC, Dissertações e Teses
+
+Análises estatísticas, interpretação de resultados e relatório técnico para pesquisas acadêmicas, com reunião inicial e orçamento gratuitos.
+
+::: hero-actions
+[Pedir um orçamento](https://forms.gle/xPocmbt3oUF6JRFk6){.btn-primary target="_blank"} [Conversar no WhatsApp](https://wa.me/5586994910578 "Converse comigo no WhatsApp"){.btn-secondary target="_blank"}
+:::
+:::::
+
+::: hero-visual
+![](testes-assets/profile-consultoria.jpg){.hero-image .hero-person-image fig-align="right" width="420"}
+:::
+:::::::
+::::::::
+
+::::::: {.section-band .section-light}
+# Serviços
+
+::::: service-feature-card
+## Consultoria Estatística e Análise de Dados
+
+Se você tem dúvidas sobre a definição da abordagem metodológica ou sobre quais análises estatísticas são mais adequadas para sua pesquisa, eu posso te ajudar.
+
+A partir dos seus dados, objetivos e pergunta de pesquisa, irei definir e executar as análises estatísticas mais adequadas para o estudo. Ao final, você receberá um **relatório técnico detalhado**, contendo metodologia, interpretações, tabelas, gráficos e comentários sobre os resultados obtidos, além de uma reunião de fechamento para esclarecimento de dúvidas.
+
+:::: {.callout-note .service-details collapse="true" appearance="simple" icon="false"}
+# Como funciona
+
+::: service-steps
+1.  **Você envia o banco de dados** e as **informações básicas da pesquisa**.
+2.  Realizamos uma **reunião online** para entender o estudo, os objetivos e as dúvidas relacionadas às análises.
+3.  Após a reunião, é definido o escopo da consultoria e enviado o **orçamento.**
+4.  Com a aprovação, são realizadas as análises estatísticas e elaborado um **relatório técnico detalhado**.
+5.  O relatório inclui metodologia, justificativa das análises, interpretação dos resultados, tabelas e gráficos.
+6.  Ao final, é realizada uma **reunião de fechamento** para apresentação dos resultados e esclarecimento de dúvidas.
+
+- **A reunião inicial e o orçamento são gratuitos.**
+
+- **O relatório incluí descrição da metodologia utilizada, justificativa das análises aplicadas e interpretação dos resultados obtidos**.
+:::
+::::
+:::::
+
+::: service-actions
+[Pedir um orçamento](https://forms.gle/xPocmbt3oUF6JRFk6){.btn-primary target="_blank"} [Conversar no WhatsApp](https://wa.me/5586994910578 "Converse comigo no WhatsApp"){.btn-primary target="_blank"}
+:::
+:::::::
+
+:::::: {#quem}
+## Estatístico responsável
+
+::::: {.section-band .section-accent .section-narrow-band}
+:::: {.section-grid .section-narrow}
+::: section-copy
+## Quem fará as análises
+
+Me chamo Enoque, sou bacharel em Estatística pela UFPI e concentro meu trabalho em consultoria científica, análise de dados, comunicação de resultados com reprodutibilidade e construção de conhecimentos baseados em método.
+:::
+::::
+:::::
+::::::
